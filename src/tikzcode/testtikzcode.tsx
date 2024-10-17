@@ -1,16 +1,4 @@
-import { useState } from "react";
-
-export function useTikzCode() {
-  const testTikzCode = getTestTikzCode()
-  const [tikzCode, setTikzCode] = useState(testTikzCode);
-
-  return {
-    tikzCode,
-    setTikzCode,
-  };
-}
-
-function getTestTikzCode() : string {
+export function getTestTikzCode() : string {
   return `\\begin{tikzpicture}[scale=1.5]
   \\draw
     (-0.7 , -0.5) node {\\tiny $1$}

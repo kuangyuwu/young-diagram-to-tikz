@@ -1,17 +1,9 @@
-import { useRef } from "react";
-
-import { useTikzCode } from "./tikzcode"
-
-export default function Preview() {
-  const previewRef = useRef(null);
-  const { tikzCode } = useTikzCode();
-
+export default function Preview({ tikzCode }: { tikzCode: string }) {
   const srcDoc = getSrcDoc(tikzCode);
-
   return (
     <div className="w-full p-1.5 md:w-1/2">    
       <div className="bg-white w-auto h-96 flex justify-center items-center p-3 rounded-3xl">
-        <div className="w-5/6 h-5/6" ref={previewRef}>
+        <div className="w-5/6 h-5/6">
           <iframe className="bg-white w-full h-full" sandbox="allow-same-origin allow-scripts" srcDoc={srcDoc}></iframe>
         </div>
       </div>
