@@ -1,1 +1,1 @@
-# young-diagram-tikz
+# TikZ generator for Young Diagrams
