@@ -1,4 +1,4 @@
-import { EdgeData, YDData } from "../constants/data";
+import { EdgeData, YDData } from "../constants/ydData";
 
 export function generateTikzCode(d: YDData): string {
   let toJoin: string[] = [];
@@ -6,7 +6,7 @@ export function generateTikzCode(d: YDData): string {
     for (let j = 0; j < d.hEdges[i].length; j++) {
       const e = d.hEdges[i][j];
       if (e.exists) {
-        toJoin.push(hEdgeToTikz(d.hEdges[i][j], i, j));
+        toJoin.push(hEdgeToTikz(d.hEdges[i][j], j, i));
       }
     }
   }
@@ -14,7 +14,7 @@ export function generateTikzCode(d: YDData): string {
     for (let j = 0; j < d.vEdges[i].length; j++) {
       const e = d.vEdges[i][j];
       if (e.exists) {
-        toJoin.push(vEdgeToTikz(d.vEdges[i][j], i, j));
+        toJoin.push(vEdgeToTikz(d.vEdges[i][j], j, i));
       }
     }
   }

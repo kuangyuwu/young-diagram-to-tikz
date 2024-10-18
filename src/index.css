@@ -2,10 +2,26 @@
 @tailwind components;
 @tailwind utilities;
 
+.vertex-box {
+  height: 10px;
+  width: 10px;
+}
+.h-edge-container {
+  height: 10px;
+  width: 54px;
+}
+.v-edge-container {
+  height: 54px;
+  width: 10px;
+}
+.cell-container {
+  height: 54px;
+  width: 54px;
+}
+
 .non-existent {
   border-color: lightgray;
   border-width: 1px;
-  height: 4px;
 }
 
 .h-edge-t-default {
@@ -28,5 +44,27 @@
 }
 .h-edge-t-ultra-thick {
   height: 7px;
+}
+
+.v-edge-t-default {
+  width: 4px;
+}
+.v-edge-t-ultra-thin {
+  width: 1px;
+}
+.v-edge-t-very-thin {
+  width: 2px;
+}
+.v-edge-t-thin {
+  width: 3px;
+}
+.v-edge-t-thick {
+  width: 5px;
+}
+.v-edge-t-very-thick {
+  width: 6px;
+}
+.v-edge-t-ultra-thick {
+  width: 7px;
 }
 
