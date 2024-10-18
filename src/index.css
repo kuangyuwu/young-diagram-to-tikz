@@ -1,3 +1,8 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.non-existent {
+  border-color: lightgray;
+  border-width: 1px;
+}
