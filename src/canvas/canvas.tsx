@@ -1,37 +1,47 @@
 import { useEffect, useState } from "react";
-import Edge from "./edge";
+import HEdge from "./h-edge";
 import { generateTikzCode } from "../utils/tikzcode";
-import { YDData } from "../constants/data";
+import { EdgeData, YDData } from "../constants/data";
+import { Color, Thickness } from "../constants/enums";
 
 export default function Canvas({
   updateTikzCode,
 }: {
   updateTikzCode: (newCode: string) => void;
 }) {
-  const [exists, setExists] = useState<boolean>(false);
+  const [edge, setEdge] = useState<EdgeData>({
+    exists: false,
+    color: Color.Blue,
+    thickness: Thickness.UltraThick,
+  });
 
-  function toggleExists(
+  function createIfNotExist(
     _event: React.MouseEvent<HTMLButtonElement, MouseEvent>
   ) {
-    setExists((s) => !s);
+    if (!edge.exists) {
+      setEdge((e) => {
+        return {
+          exists: true,
+          color: e.color,
+          thickness: e.thickness,
+        };
+      });
+    }
   }
 
   useEffect(() => {
-    let d: YDData = {
-      hEdges: [[]],
+    const d: YDData = {
+      hEdges: [[edge]],
       vEdges: [],
     };
-    if (exists) {
-      d.hEdges[0].push({});
-    }
     const newCode = generateTikzCode(d);
     updateTikzCode(newCode);
-  }, [exists]);
+  }, [edge]);
 
   return (
     <div className="w-11/12 p-1.5 lg:w-3/4">
       <div className="bg-white w-auto h-96 rounded-3xl flex justify-center items-center">
-        <Edge exists={exists} toggleExists={toggleExists}></Edge>
+        <HEdge edgeData={edge} createIfNotExist={createIfNotExist}></HEdge>
       </div>
     </div>
   );

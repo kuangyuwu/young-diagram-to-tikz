@@ -5,4 +5,28 @@
 .non-existent {
   border-color: lightgray;
   border-width: 1px;
+  height: 4px;
 }
+
+.h-edge-t-default {
+  height: 4px;
+}
+.h-edge-t-ultra-thin {
+  height: 1px;
+}
+.h-edge-t-very-thin {
+  height: 2px;
+}
+.h-edge-t-thin {
+  height: 3px;
+}
+.h-edge-t-thick {
+  height: 5px;
+}
+.h-edge-t-very-thick {
+  height: 6px;
+}
+.h-edge-t-ultra-thick {
+  height: 7px;
+}
+

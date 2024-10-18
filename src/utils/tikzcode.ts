@@ -4,12 +4,18 @@ export function generateTikzCode(d: YDData): string {
   let toJoin: string[] = [];
   for (let i = 0; i < d.hEdges.length; i++) {
     for (let j = 0; j < d.hEdges[i].length; j++) {
-      toJoin.push(hEdgeToTikz(d.hEdges[i][j], i, j));
+      const e = d.hEdges[i][j];
+      if (e.exists) {
+        toJoin.push(hEdgeToTikz(d.hEdges[i][j], i, j));
+      }
     }
   }
   for (let i = 0; i < d.vEdges.length; i++) {
     for (let j = 0; j < d.vEdges[i].length; j++) {
-      toJoin.push(vEdgeToTikz(d.vEdges[i][j], i, j));
+      const e = d.vEdges[i][j];
+      if (e.exists) {
+        toJoin.push(vEdgeToTikz(d.vEdges[i][j], i, j));
+      }
     }
   }
 
@@ -36,7 +42,7 @@ function edgeToTikz(
   let props: string[] = [];
   for (let k in d) {
     const key = k as keyof EdgeData;
-    if (d[key]) {
+    if (key !== "exists" && d[key] !== "default") {
       props.push(d[key]);
     }
   }
