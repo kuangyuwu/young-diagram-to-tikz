@@ -12,15 +12,21 @@ export function getThicknessClassName(
 }
 
 export function getColorClassName(isEdge: boolean, c: Color): string {
-  const prefix = isEdge ? "bg" : "text";
-  const suffix =
-    c === Color.Black
-      ? "black"
+  // using full tailwind class names to prevent them from being purged
+  if (isEdge) {
+    return c === Color.Black
+      ? "bg-black"
       : c === Color.Blue
-        ? "blue-700"
+        ? "bg-blue-700"
         : c === Color.Red
-          ? "red-700"
-          : "black";
-  const className = `${prefix}-${suffix}`;
-  return className;
+          ? "bg-red-700"
+          : "bg-black";
+  }
+  return c === Color.Black
+    ? "text-black"
+    : c === Color.Blue
+      ? "text-blue-700"
+      : c === Color.Red
+        ? "text-red-700"
+        : "text-black";
 }

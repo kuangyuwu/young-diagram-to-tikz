@@ -1,8 +1,5 @@
 import { EdgeData } from "../constants/data";
-import {
-  getColorClassName,
-  getThicknessClassName,
-} from "../utils/getClassName";
+import { getColorClassName, getThicknessClassName } from "../utils/classname";
 
 export default function HEdge({
   edgeData,
