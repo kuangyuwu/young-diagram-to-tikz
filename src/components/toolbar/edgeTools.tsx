@@ -1,5 +1,5 @@
 import { useCallback } from "react";
-import { EdgeData, YDIndex } from "../constants/ydData";
+import { EdgeData, YDIndex } from "../../constants/ydData";
 import EdgeColorTool from "./edgeColor";
 
 export default function EdgeTools({

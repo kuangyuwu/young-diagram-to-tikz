@@ -1,14 +1,14 @@
-import Canvas from "./canvas/canvas.tsx";
+import Canvas from "./components/canvas/canvas.tsx";
 import useSelection from "./hooks/useSelection.tsx";
 import useYDData from "./hooks/useYDData.tsx";
-import Result from "./result/result.tsx";
+import Result from "./components/result/result.tsx";
 import Title from "./title.tsx";
-import ToolBar from "./toolbar/toolbar.tsx";
+import ToolBar from "./components/toolbar/toolbar.tsx";
 import { generateTikzCode } from "./utils/tikzcode.ts";
 
 function App() {
   const { ydData, getYDData, updateYDData } = useYDData(5, 5);
-  const { selection, setSelection, clearSelection } = useSelection();
+  const { selection, setSelection } = useSelection();
 
   const selectedData = selection !== null ? getYDData(selection) : null;
   const tikzCode = generateTikzCode(ydData);

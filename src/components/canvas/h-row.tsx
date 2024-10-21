@@ -1,4 +1,4 @@
-import { EdgeData } from "../constants/ydData";
+import { EdgeData } from "../../constants/ydData";
 import HEdge from "./h-edge";
 
 export default function HRow({

@@ -1,4 +1,4 @@
-import { EdgeData, YDIndex } from "../constants/ydData";
+import { EdgeData, YDIndex } from "../../constants/ydData";
 import EdgeTools from "./edgeTools";
 
 export default function ToolBar({

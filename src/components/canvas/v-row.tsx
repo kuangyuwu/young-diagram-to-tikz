@@ -1,4 +1,4 @@
-import { EdgeData } from "../constants/ydData";
+import { EdgeData } from "../../constants/ydData";
 import VEdge from "./v-edge";
 
 export default function VRow({

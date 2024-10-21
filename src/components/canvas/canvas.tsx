@@ -1,4 +1,4 @@
-import { EdgeData, YDData, YDIndex } from "../constants/ydData";
+import { EdgeData, YDData, YDIndex } from "../../constants/ydData";
 import HRow from "./h-row";
 import VRow from "./v-row";
 

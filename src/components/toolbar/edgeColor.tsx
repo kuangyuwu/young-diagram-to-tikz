@@ -1,7 +1,7 @@
 import { useState } from "react";
-import { Color } from "../constants/enums";
-import { getColorClassName } from "../utils/classname";
-import { EdgeData } from "../constants/ydData";
+import { Color } from "../../constants/enums";
+import { getColorClassName } from "../../utils/classname";
+import { EdgeData } from "../../constants/ydData";
 
 export default function EdgeColorTool({
   color,

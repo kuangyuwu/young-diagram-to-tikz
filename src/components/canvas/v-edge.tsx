@@ -1,5 +1,8 @@
-import { EdgeData } from "../constants/ydData";
-import { getColorClassName, getThicknessClassName } from "../utils/classname";
+import { EdgeData } from "../../constants/ydData";
+import {
+  getColorClassName,
+  getThicknessClassName,
+} from "../../utils/classname";
 
 export default function VEdge({
   i,
