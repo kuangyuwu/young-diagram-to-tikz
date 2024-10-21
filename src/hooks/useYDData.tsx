@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { EdgeData, YDData } from "../constants/ydData";
+import { useCallback, useState } from "react";
+import { EdgeData, YDData, YDIndex } from "../constants/ydData";
 import { Color, Thickness } from "../constants/enums";
 
 const maxNumRow = 10;
@@ -16,41 +16,108 @@ export default function useYDData(numRow: number, numCol: number) {
   const initData = getInitData(numRow, numCol);
   const [ydData, setYDData] = useState<YDData>(initData);
 
-  function updateHEdge(i: number, j: number, toUpdate: Partial<EdgeData>) {
-    if (!Number.isInteger(i) || i < 0 || i >= ydData.hEdges.length) {
-      throw new Error(
-        `i should be an integer from 0 to ${ydData.hEdges.length}`
-      );
-    }
-    if (!Number.isInteger(j) || j < 0 || j >= ydData.hEdges[0].length) {
-      throw new Error(
-        `j should be an integer from 0 to ${ydData.hEdges[0].length}`
-      );
-    }
-    const newEdge = { ...ydData.hEdges[i][j], ...toUpdate };
-    let newData = { ...ydData };
-    newData.hEdges[i][j] = newEdge;
-    setYDData(newData);
-  }
+  const getYDData = useCallback(
+    (ydIndex: YDIndex): EdgeData => {
+      if (!ydIndex.isEdge) {
+        throw new Error("not implemented yet");
+      }
+      if (ydIndex.isHorizontal) {
+        return getHEdgeData(ydIndex.i, ydIndex.j);
+      }
+      return getVEdgeData(ydIndex.i, ydIndex.j);
+    },
+    [ydData]
+  );
 
-  function updateVEdge(i: number, j: number, toUpdate: Partial<EdgeData>) {
-    if (!Number.isInteger(i) || i < 0 || i >= ydData.vEdges.length) {
-      throw new Error(
-        `i should be an integer from 0 to ${ydData.vEdges.length}`
-      );
-    }
-    if (!Number.isInteger(j) || j < 0 || j >= ydData.vEdges[0].length) {
-      throw new Error(
-        `j should be an integer from 0 to ${ydData.vEdges[0].length}`
-      );
-    }
-    const newEdge = { ...ydData.vEdges[i][j], ...toUpdate };
-    let newData = { ...ydData };
-    newData.vEdges[i][j] = newEdge;
-    setYDData(newData);
-  }
+  const getHEdgeData = useCallback(
+    (i: number, j: number): EdgeData => {
+      if (!Number.isInteger(i) || i < 0 || i >= ydData.hEdges.length) {
+        throw new Error(
+          `i should be an integer from 0 to ${ydData.hEdges.length}`
+        );
+      }
+      if (!Number.isInteger(j) || j < 0 || j >= ydData.hEdges[0].length) {
+        throw new Error(
+          `j should be an integer from 0 to ${ydData.hEdges[0].length}`
+        );
+      }
+      return ydData.hEdges[i][j];
+    },
+    [ydData]
+  );
 
-  return { ydData: ydData, updateHEdge: updateHEdge, updateVEdge: updateVEdge };
+  const getVEdgeData = useCallback(
+    (i: number, j: number): EdgeData => {
+      if (!Number.isInteger(i) || i < 0 || i >= ydData.vEdges.length) {
+        throw new Error(
+          `i should be an integer from 0 to ${ydData.vEdges.length}`
+        );
+      }
+      if (!Number.isInteger(j) || j < 0 || j >= ydData.vEdges[0].length) {
+        throw new Error(
+          `j should be an integer from 0 to ${ydData.vEdges[0].length}`
+        );
+      }
+      return ydData.vEdges[i][j];
+    },
+    [ydData]
+  );
+
+  const updateYDData = useCallback(
+    (ydIndex: YDIndex, changes: Partial<EdgeData>) => {
+      if (!ydIndex.isEdge) {
+        throw new Error("not implemented yet");
+      }
+      if (ydIndex.isHorizontal) {
+        updateHEdge(ydIndex.i, ydIndex.j, changes);
+      } else {
+        updateVEdge(ydIndex.i, ydIndex.j, changes);
+      }
+    },
+    [ydData]
+  );
+
+  const updateHEdge = useCallback(
+    (i: number, j: number, changes: Partial<EdgeData>) => {
+      if (!Number.isInteger(i) || i < 0 || i >= ydData.hEdges.length) {
+        throw new Error(
+          `i should be an integer from 0 to ${ydData.hEdges.length}`
+        );
+      }
+      if (!Number.isInteger(j) || j < 0 || j >= ydData.hEdges[0].length) {
+        throw new Error(
+          `j should be an integer from 0 to ${ydData.hEdges[0].length}`
+        );
+      }
+      const newEdge = { ...ydData.hEdges[i][j], ...changes };
+      let newdata = { ...ydData };
+      newdata.hEdges[i][j] = newEdge;
+      setYDData(newdata);
+    },
+    [ydData]
+  );
+
+  const updateVEdge = useCallback(
+    (i: number, j: number, changes: Partial<EdgeData>) => {
+      if (!Number.isInteger(i) || i < 0 || i >= ydData.vEdges.length) {
+        throw new Error(
+          `i should be an integer from 0 to ${ydData.vEdges.length}`
+        );
+      }
+      if (!Number.isInteger(j) || j < 0 || j >= ydData.vEdges[0].length) {
+        throw new Error(
+          `j should be an integer from 0 to ${ydData.vEdges[0].length}`
+        );
+      }
+      const newEdge = { ...ydData.vEdges[i][j], ...changes };
+      let newdata = { ...ydData };
+      newdata.vEdges[i][j] = newEdge;
+      setYDData(newdata);
+    },
+    [ydData]
+  );
+
+  return { ydData: ydData, getYDData: getYDData, updateYDData: updateYDData };
 }
 
 function getInitData(numRow: number, numCol: number): YDData {

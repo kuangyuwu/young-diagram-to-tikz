@@ -10,3 +10,10 @@ export type YDData = {
   hEdges: EdgeData[][];
   vEdges: EdgeData[][];
 };
+
+export type YDIndex = {
+  i: number;
+  j: number;
+  isEdge: boolean;
+  isHorizontal: boolean;
+};

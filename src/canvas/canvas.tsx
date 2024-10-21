@@ -1,27 +1,28 @@
-import { EdgeData, YDData } from "../constants/ydData";
+import { EdgeData, YDData, YDIndex } from "../constants/ydData";
 import HRow from "./h-row";
 import VRow from "./v-row";
 
 export default function Canvas({
   ydData,
-  updateHEdge,
-  updateVEdge,
+  updateYDData,
+  setSelection,
 }: {
   ydData: YDData;
-  updateHEdge: (i: number, j: number, toUpdate: Partial<EdgeData>) => void;
-  updateVEdge: (i: number, j: number, toUpdate: Partial<EdgeData>) => void;
+  updateYDData: (ydIndex: YDIndex, changes: Partial<EdgeData>) => void;
+  setSelection: (ydIndex: YDIndex) => void;
 }) {
   function getEdgeOnClick(
     isHorizontal: boolean,
     i: number,
     j: number
-  ): (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void {
-    const updateEdge = isHorizontal ? updateHEdge : updateVEdge;
+  ): React.MouseEventHandler<HTMLButtonElement> {
+    const ydIndex = { i: i, j: j, isEdge: true, isHorizontal: isHorizontal };
     function createIfNotExist(
       _event: React.MouseEvent<HTMLButtonElement, MouseEvent>
     ) {
       console.log(i, j);
-      updateEdge(i, j, { exists: true });
+      updateYDData(ydIndex, { exists: true });
+      setSelection(ydIndex);
     }
     return createIfNotExist;
   }
