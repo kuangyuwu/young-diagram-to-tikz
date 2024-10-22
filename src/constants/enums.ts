@@ -6,13 +6,13 @@ export enum Color {
 }
 
 export enum Thickness {
-  Default = "default",
-  UltraThin = "ultra thin",
+  // UltraThin = "ultra thin",
   VeryThin = "very thin",
   Thin = "thin",
+  Default = "default",
   Thick = "thick",
   VeryThick = "very thick",
-  UltraThick = "ultra thick",
+  // UltraThick = "ultra thick",
 }
 
 export enum YDElement {
@@ -24,5 +24,6 @@ export enum YDElement {
 export enum Tools {
   None = 0,
   EdgeColor = 1,
+  EdgeThickness = 2,
   Delete = 9,
 }

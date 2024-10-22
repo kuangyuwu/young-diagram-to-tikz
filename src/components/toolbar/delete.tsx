@@ -17,14 +17,11 @@ export default function DeleteTool({
     setExpandedTool(Tools.None);
   }, [makeUpdate]);
 
-  const toggleIsExpanded = useCallback(
-    (_event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
-      setExpandedTool(
-        expandedTool === Tools.Delete ? Tools.None : Tools.Delete
-      );
-    },
-    []
-  );
+  function toggleIsExpanded(
+    _event: React.MouseEvent<HTMLButtonElement, MouseEvent>
+  ) {
+    setExpandedTool(expandedTool === Tools.Delete ? Tools.None : Tools.Delete);
+  }
 
   const deleteElement = useCallback(() => {
     makeUpdate({
@@ -39,6 +36,7 @@ export default function DeleteTool({
   return (
     <div className="h-8 m-1 rounded-full bg-red-200 flex flex-nowrap items-center">
       <button
+        title="delete"
         className="w-6 h-6 m-1 rounded-full hover:scale-110 delete-button"
         onClick={toggleIsExpanded}
       ></button>

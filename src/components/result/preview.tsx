@@ -1,6 +1,12 @@
 import { useEffect, useState } from "react";
 
-export default function Preview({ tikzCode }: { tikzCode: string }) {
+export default function Preview({
+  tikzCode,
+  clearSelection,
+}: {
+  tikzCode: string;
+  clearSelection: () => void;
+}) {
   const [showPreview, setShowPreview] = useState<boolean>(false);
 
   useEffect(() => {
@@ -26,7 +32,10 @@ export default function Preview({ tikzCode }: { tikzCode: string }) {
           <button
             className="bg-orange-100 w-40 h-10 rounded-full font-mono"
             title="Show Preview"
-            onClick={() => setShowPreview(true)}
+            onClick={() => {
+              setShowPreview(true);
+              clearSelection();
+            }}
           >
             Show Preview
           </button>

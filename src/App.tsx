@@ -37,7 +37,7 @@ function App() {
             setSelection={setSelection}
           />
         </SelectionContext.Provider>
-        <Result tikzCode={tikzCode} />
+        <Result tikzCode={tikzCode} clearSelection={clearSelection} />
       </div>
     </div>
   );

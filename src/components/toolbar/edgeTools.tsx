@@ -3,6 +3,7 @@ import { EdgeData, YDIndex } from "../../constants/ydData";
 import EdgeColorTool from "./edgeColor";
 import DeleteTool from "./delete";
 import { Tools } from "../../constants/enums";
+import EdgeThicknessTool from "./edgeThickness";
 
 export default function EdgeToolBar({
   selection,
@@ -28,6 +29,12 @@ export default function EdgeToolBar({
     <>
       <EdgeColorTool
         color={selectedData.color}
+        makeUpdate={makeUpdate}
+        expandedTool={expandedTool}
+        setExpandedTool={setExpandedTool}
+      />
+      <EdgeThicknessTool
+        thickness={selectedData.thickness}
         makeUpdate={makeUpdate}
         expandedTool={expandedTool}
         setExpandedTool={setExpandedTool}
