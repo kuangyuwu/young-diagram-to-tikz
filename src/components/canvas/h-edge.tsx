@@ -1,8 +1,10 @@
+import { useContext } from "react";
 import { EdgeData } from "../../constants/ydData";
 import {
   getColorClassName,
   getThicknessClassName,
 } from "../../utils/classname";
+import { SelectionContext } from "../../App";
 
 export default function HEdge({
   i,
@@ -22,6 +24,18 @@ export default function HEdge({
     classNameList.push(getColorClassName(true, edgeData.color));
     classNameList.push(getThicknessClassName(true, edgeData.thickness));
   }
+
+  const selection = useContext(SelectionContext);
+  if (
+    selection !== null &&
+    selection.isEdge &&
+    selection.isHorizontal &&
+    i === selection.i &&
+    j === selection.j
+  ) {
+    classNameList.push("selected");
+  }
+
   const className = classNameList.join(" ");
 
   return (

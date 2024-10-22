@@ -2,9 +2,13 @@ import Canvas from "./components/canvas/canvas.tsx";
 import useSelection from "./hooks/useSelection.tsx";
 import useYDData from "./hooks/useYDData.tsx";
 import Result from "./components/result/result.tsx";
-import Title from "./title.tsx";
+import Title from "./components/title.tsx";
 import ToolBar from "./components/toolbar/toolbar.tsx";
 import { generateTikzCode } from "./utils/tikzcode.ts";
+import { createContext } from "react";
+import { YDIndex } from "./constants/ydData.ts";
+
+export const SelectionContext = createContext<YDIndex | null>(null);
 
 function App() {
   const { ydData, getYDData, updateYDData } = useYDData(5, 5);
@@ -22,11 +26,13 @@ function App() {
           selectedData={selectedData}
           updateYDData={updateYDData}
         />
-        <Canvas
-          ydData={ydData}
-          updateYDData={updateYDData}
-          setSelection={setSelection}
-        />
+        <SelectionContext.Provider value={selection}>
+          <Canvas
+            ydData={ydData}
+            updateYDData={updateYDData}
+            setSelection={setSelection}
+          />
+        </SelectionContext.Provider>
         <Result tikzCode={tikzCode} />
       </div>
     </div>

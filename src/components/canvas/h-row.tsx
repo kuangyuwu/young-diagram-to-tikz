@@ -14,15 +14,15 @@ export default function HRow({
     j: number
   ) => React.MouseEventHandler<HTMLButtonElement>;
 }) {
-  let child = [];
+  let children = [];
   for (let j = 0; j < edges.length; j++) {
-    child.push(
+    children.push(
       <div
         className="flex justify-center items-center vertex-box"
         key={`vertex-box-${i}-${j}`}
       ></div>
     );
-    child.push(
+    children.push(
       <HEdge
         i={i}
         j={j}
@@ -32,7 +32,7 @@ export default function HRow({
       />
     );
   }
-  child.push(
+  children.push(
     <div
       className="flex justify-center items-center vertex-box"
       key={`vertex-box-${i}-${edges.length}`}
@@ -40,7 +40,7 @@ export default function HRow({
   );
   return (
     <div className="flex" key={`h-row-div-${i}`}>
-      {child}
+      {children}
     </div>
   );
 }

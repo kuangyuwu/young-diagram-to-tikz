@@ -20,7 +20,6 @@ export default function Canvas({
     function createIfNotExist(
       _event: React.MouseEvent<HTMLButtonElement, MouseEvent>
     ) {
-      console.log(i, j);
       updateYDData(ydIndex, { exists: true });
       setSelection(ydIndex);
     }

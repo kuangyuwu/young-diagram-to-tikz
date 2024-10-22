@@ -17,11 +17,15 @@
 .cell-container {
   height: 54px;
   width: 54px;
+  z-index: 0;
 }
 
 .non-existent {
   border-color: lightgray;
   border-width: 1px;
+}
+.selected {
+  box-shadow: 0 0 4px 3px rgba(254, 230, 138, 1.0);
 }
 
 .h-edge-t-default {

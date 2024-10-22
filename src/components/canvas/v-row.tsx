@@ -14,9 +14,9 @@ export default function VRow({
     j: number
   ) => React.MouseEventHandler<HTMLButtonElement>;
 }) {
-  let child = [];
+  let children = [];
   for (let j = 0; j < edges.length; j++) {
-    child.push(
+    children.push(
       <VEdge
         i={i}
         j={j}
@@ -26,7 +26,7 @@ export default function VRow({
       />
     );
     if (j !== edges.length - 1) {
-      child.push(
+      children.push(
         <div
           className="flex justify-center items-center cell-container"
           key={`cell-container-${i}-${j}`}
@@ -36,7 +36,7 @@ export default function VRow({
   }
   return (
     <div className="flex" key={`v-row-div-${i}`}>
-      {child}
+      {children}
     </div>
   );
 }

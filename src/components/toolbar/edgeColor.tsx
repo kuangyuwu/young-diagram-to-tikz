@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Color } from "../../constants/enums";
 import { getColorClassName } from "../../utils/classname";
 import { EdgeData } from "../../constants/ydData";
@@ -11,6 +11,10 @@ export default function EdgeColorTool({
   makeUpdate: (newData: Partial<EdgeData>) => void;
 }) {
   const [isExpanded, setIsExpanded] = useState<boolean>(false);
+
+  useEffect(() => {
+    setIsExpanded(false);
+  }, [makeUpdate]);
 
   function toggleIsExpanded(
     _event: React.MouseEvent<HTMLButtonElement, MouseEvent>
