@@ -2,6 +2,13 @@
 @tailwind components;
 @tailwind utilities;
 
+.delete-button {
+  background-image: url("../public/delete.png");
+  background-size: 22px 22px;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
 .vertex-box {
   height: 10px;
   width: 10px;

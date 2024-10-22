@@ -20,3 +20,9 @@ export enum YDElement {
   VEdge = 1,
   Cell = 2,
 }
+
+export enum Tools {
+  None = 0,
+  EdgeColor = 1,
+  Delete = 9,
+}

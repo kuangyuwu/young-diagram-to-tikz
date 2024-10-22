@@ -1,36 +1,40 @@
-import { useEffect, useState } from "react";
-import { Color } from "../../constants/enums";
+import { useEffect } from "react";
+import { Color, Tools } from "../../constants/enums";
 import { getColorClassName } from "../../utils/classname";
 import { EdgeData } from "../../constants/ydData";
 
 export default function EdgeColorTool({
   color,
   makeUpdate,
+  expandedTool,
+  setExpandedTool,
 }: {
   color: Color;
   makeUpdate: (newData: Partial<EdgeData>) => void;
+  expandedTool: Tools;
+  setExpandedTool: (t: Tools) => void;
 }) {
-  const [isExpanded, setIsExpanded] = useState<boolean>(false);
-
   useEffect(() => {
-    setIsExpanded(false);
+    setExpandedTool(Tools.None);
   }, [makeUpdate]);
 
   function toggleIsExpanded(
     _event: React.MouseEvent<HTMLButtonElement, MouseEvent>
   ) {
-    setIsExpanded((b) => !b);
+    setExpandedTool(
+      expandedTool === Tools.EdgeColor ? Tools.None : Tools.EdgeColor
+    );
   }
 
   function getColorSetter(newColor: Color) {
     return (_event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
-      setIsExpanded(false);
+      setExpandedTool(Tools.None);
       makeUpdate({ color: newColor });
     };
   }
 
   let options = [
-    <div key="edge-color-blank" className="w-1 inline-block"></div>,
+    <div key="edge-color-blank" className="w-2 inline-block"></div>,
   ];
   for (let [, c] of Object.entries(Color)) {
     if (c === Color.Black) continue;
@@ -46,14 +50,14 @@ export default function EdgeColorTool({
   }
 
   return (
-    <span className="h-8 m-1 rounded-full bg-gray-200">
+    <div className="h-8 m-1 rounded-full bg-gray-200 flex flex-nowrap">
       <EdgeColorButtons
         title="Color"
         color={color}
         onClick={toggleIsExpanded}
       />
-      {isExpanded ? options : <></>}
-    </span>
+      {expandedTool === Tools.EdgeColor ? options : <></>}
+    </div>
   );
 }
 

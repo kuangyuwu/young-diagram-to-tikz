@@ -5,7 +5,7 @@ import Result from "./components/result/result.tsx";
 import Title from "./components/title.tsx";
 import ToolBar from "./components/toolbar/toolbar.tsx";
 import { generateTikzCode } from "./utils/tikzcode.ts";
-import { createContext } from "react";
+import { createContext, useCallback } from "react";
 import { YDIndex } from "./constants/ydData.ts";
 
 export const SelectionContext = createContext<YDIndex | null>(null);
@@ -15,6 +15,9 @@ function App() {
   const { selection, setSelection } = useSelection();
 
   const selectedData = selection !== null ? getYDData(selection) : null;
+  const clearSelection = useCallback(() => {
+    setSelection(null);
+  }, []);
   const tikzCode = generateTikzCode(ydData);
 
   return (
@@ -25,6 +28,7 @@ function App() {
           selection={selection}
           selectedData={selectedData}
           updateYDData={updateYDData}
+          clearSelection={clearSelection}
         />
         <SelectionContext.Provider value={selection}>
           <Canvas
