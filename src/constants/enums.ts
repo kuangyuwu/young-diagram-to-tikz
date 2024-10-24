@@ -15,7 +15,7 @@ export enum Thickness {
   // UltraThick = "ultra thick",
 }
 
-export enum YDElement {
+export enum YDItemType {
   HEdge = 0,
   VEdge = 1,
   Cell = 2,

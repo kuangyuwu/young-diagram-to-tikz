@@ -4,7 +4,8 @@ import {
   getColorClassName,
   getThicknessClassName,
 } from "../../utils/classname";
-import { SelectionContext } from "../../App";
+import { SelectedIndexContext } from "../../App";
+import { YDItemType } from "../../constants/enums";
 
 export default function HEdge({
   i,
@@ -25,13 +26,12 @@ export default function HEdge({
     classNameList.push(getThicknessClassName(true, edgeData.thickness));
   }
 
-  const selection = useContext(SelectionContext);
+  const selectedIndex = useContext(SelectedIndexContext);
   if (
-    selection !== null &&
-    selection.isEdge &&
-    selection.isHorizontal &&
-    i === selection.i &&
-    j === selection.j
+    selectedIndex !== null &&
+    selectedIndex.itemType === YDItemType.HEdge &&
+    i === selectedIndex.i &&
+    j === selectedIndex.j
   ) {
     classNameList.push("selected");
   }

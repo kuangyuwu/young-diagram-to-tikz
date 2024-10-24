@@ -6,12 +6,12 @@ import { Tools } from "../../constants/enums";
 import EdgeThicknessTool from "./edgeThickness";
 
 export default function EdgeToolBar({
-  selection,
+  selectedIndex,
   selectedData,
   updateYDData,
   clearSelection,
 }: {
-  selection: YDIndex;
+  selectedIndex: YDIndex;
   selectedData: EdgeData;
   updateYDData: (ydIndex: YDIndex, changes: Partial<EdgeData>) => void;
   clearSelection: () => void;
@@ -20,9 +20,9 @@ export default function EdgeToolBar({
 
   const makeUpdate = useCallback(
     (changes: Partial<EdgeData>) => {
-      updateYDData(selection, changes);
+      updateYDData(selectedIndex, changes);
     },
-    [selection]
+    [selectedIndex]
   );
 
   return (

@@ -1,3 +1,4 @@
+import { YDItemType } from "../../constants/enums";
 import { EdgeData, YDData, YDIndex } from "../../constants/ydData";
 import HRow from "./h-row";
 import VRow from "./v-row";
@@ -5,44 +6,65 @@ import VRow from "./v-row";
 export default function Canvas({
   ydData,
   updateYDData,
-  setSelection,
+  updateSelectedIndex,
 }: {
   ydData: YDData;
   updateYDData: (ydIndex: YDIndex, changes: Partial<EdgeData>) => void;
-  setSelection: (ydIndex: YDIndex) => void;
+  updateSelectedIndex: (ydIndex: YDIndex) => void;
 }) {
   function getEdgeOnClick(
     isHorizontal: boolean,
     i: number,
     j: number
   ): React.MouseEventHandler<HTMLButtonElement> {
-    const ydIndex = { i: i, j: j, isEdge: true, isHorizontal: isHorizontal };
-    function createIfNotExist(
-      _event: React.MouseEvent<HTMLButtonElement, MouseEvent>
-    ) {
+    const ydIndex = {
+      i: i,
+      j: j,
+      itemType: isHorizontal ? YDItemType.HEdge : YDItemType.VEdge,
+    };
+    function onClick(_event: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
       updateYDData(ydIndex, { exists: true });
-      setSelection(ydIndex);
+      updateSelectedIndex(ydIndex);
     }
-    return createIfNotExist;
+    return onClick;
+  }
+
+  function getCellOnClick(
+    i: number,
+    j: number
+  ): React.MouseEventHandler<HTMLButtonElement> {
+    const neighboringEdges: Array<YDIndex> = [
+      { i: i, j: j, itemType: YDItemType.HEdge },
+      { i: i + 1, j: j, itemType: YDItemType.HEdge },
+      { i: i, j: j, itemType: YDItemType.VEdge },
+      { i: i, j: j + 1, itemType: YDItemType.VEdge },
+    ];
+    function onClick(_event: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
+      for (const e of neighboringEdges) {
+        updateYDData(e, { exists: true });
+      }
+    }
+    return onClick;
   }
 
   let child = [];
   for (let i = 0; i < ydData.hEdges.length; i++) {
     child.push(
       <HRow
+        key={`h-row-${i}`}
         i={i}
         edges={ydData.hEdges[i]}
         getEdgeOnClick={getEdgeOnClick}
-        key={`h-row-${i}`}
       />
     );
     if (i !== ydData.vEdges.length) {
       child.push(
         <VRow
+          key={`v-row-${i}`}
           i={i}
           edges={ydData.vEdges[i]}
           getEdgeOnClick={getEdgeOnClick}
-          key={`v-row-${i}`}
+          getCellOnClick={getCellOnClick}
         />
       );
     }

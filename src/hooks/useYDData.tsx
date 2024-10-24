@@ -1,6 +1,6 @@
 import { useCallback, useState } from "react";
-import { EdgeData, YDData, YDIndex } from "../constants/ydData";
-import { Color, Thickness } from "../constants/enums";
+import { CellData, EdgeData, YDData, YDIndex } from "../constants/ydData";
+import { Color, Thickness, YDItemType } from "../constants/enums";
 
 const maxNumRow = 10;
 const maxNumCol = 10;
@@ -17,14 +17,18 @@ export default function useYDData(numRow: number, numCol: number) {
   const [ydData, setYDData] = useState<YDData>(initData);
 
   const getYDData = useCallback(
-    (ydIndex: YDIndex): EdgeData => {
-      if (!ydIndex.isEdge) {
-        throw new Error("not implemented yet");
+    (ydIndex: YDIndex): EdgeData | CellData => {
+      switch (ydIndex.itemType) {
+        case YDItemType.HEdge:
+          return getHEdgeData(ydIndex.i, ydIndex.j);
+        case YDItemType.VEdge:
+          return getVEdgeData(ydIndex.i, ydIndex.j);
+        case YDItemType.Cell:
+          return getCellData(ydIndex.i, ydIndex.j);
+        default:
+          break;
       }
-      if (ydIndex.isHorizontal) {
-        return getHEdgeData(ydIndex.i, ydIndex.j);
-      }
-      return getVEdgeData(ydIndex.i, ydIndex.j);
+      throw new Error("not implemented yet");
     },
     [ydData]
   );
@@ -33,12 +37,12 @@ export default function useYDData(numRow: number, numCol: number) {
     (i: number, j: number): EdgeData => {
       if (!Number.isInteger(i) || i < 0 || i >= ydData.hEdges.length) {
         throw new Error(
-          `i should be an integer from 0 to ${ydData.hEdges.length}`
+          `i should be an integer from 0 to ${ydData.hEdges.length - 1}`
         );
       }
       if (!Number.isInteger(j) || j < 0 || j >= ydData.hEdges[0].length) {
         throw new Error(
-          `j should be an integer from 0 to ${ydData.hEdges[0].length}`
+          `j should be an integer from 0 to ${ydData.hEdges[0].length - 1}`
         );
       }
       return ydData.hEdges[i][j];
@@ -50,12 +54,12 @@ export default function useYDData(numRow: number, numCol: number) {
     (i: number, j: number): EdgeData => {
       if (!Number.isInteger(i) || i < 0 || i >= ydData.vEdges.length) {
         throw new Error(
-          `i should be an integer from 0 to ${ydData.vEdges.length}`
+          `i should be an integer from 0 to ${ydData.vEdges.length - 1}`
         );
       }
       if (!Number.isInteger(j) || j < 0 || j >= ydData.vEdges[0].length) {
         throw new Error(
-          `j should be an integer from 0 to ${ydData.vEdges[0].length}`
+          `j should be an integer from 0 to ${ydData.vEdges[0].length - 1}`
         );
       }
       return ydData.vEdges[i][j];
@@ -63,16 +67,39 @@ export default function useYDData(numRow: number, numCol: number) {
     [ydData]
   );
 
+  const getCellData = useCallback(
+    (i: number, j: number): CellData => {
+      if (!Number.isInteger(i) || i < 0 || i >= ydData.cells.length) {
+        throw new Error(
+          `i should be an integer from 0 to ${ydData.cells.length - 1}`
+        );
+      }
+      if (!Number.isInteger(j) || j < 0 || j >= ydData.cells[0].length) {
+        throw new Error(
+          `j should be an integer from 0 to ${ydData.cells[0].length - 1}`
+        );
+      }
+      return ydData.cells[i][j];
+    },
+    [ydData]
+  );
+
   const updateYDData = useCallback(
     (ydIndex: YDIndex, changes: Partial<EdgeData>) => {
-      if (!ydIndex.isEdge) {
-        throw new Error("not implemented yet");
+      switch (ydIndex.itemType) {
+        case YDItemType.HEdge:
+          updateHEdge(ydIndex.i, ydIndex.j, changes);
+          return;
+        case YDItemType.VEdge:
+          updateVEdge(ydIndex.i, ydIndex.j, changes);
+          return;
+        case YDItemType.Cell:
+          updateCell(ydIndex.i, ydIndex.j, changes);
+          return;
+        default:
+          break;
       }
-      if (ydIndex.isHorizontal) {
-        updateHEdge(ydIndex.i, ydIndex.j, changes);
-      } else {
-        updateVEdge(ydIndex.i, ydIndex.j, changes);
-      }
+      throw new Error("not implemented yet");
     },
     [ydData]
   );
@@ -81,12 +108,12 @@ export default function useYDData(numRow: number, numCol: number) {
     (i: number, j: number, changes: Partial<EdgeData>) => {
       if (!Number.isInteger(i) || i < 0 || i >= ydData.hEdges.length) {
         throw new Error(
-          `i should be an integer from 0 to ${ydData.hEdges.length}`
+          `i should be an integer from 0 to ${ydData.hEdges.length - 1}`
         );
       }
       if (!Number.isInteger(j) || j < 0 || j >= ydData.hEdges[0].length) {
         throw new Error(
-          `j should be an integer from 0 to ${ydData.hEdges[0].length}`
+          `j should be an integer from 0 to ${ydData.hEdges[0].length - 1}`
         );
       }
       const newEdge = { ...ydData.hEdges[i][j], ...changes };
@@ -101,17 +128,37 @@ export default function useYDData(numRow: number, numCol: number) {
     (i: number, j: number, changes: Partial<EdgeData>) => {
       if (!Number.isInteger(i) || i < 0 || i >= ydData.vEdges.length) {
         throw new Error(
-          `i should be an integer from 0 to ${ydData.vEdges.length}`
+          `i should be an integer from 0 to ${ydData.vEdges.length - 1}`
         );
       }
       if (!Number.isInteger(j) || j < 0 || j >= ydData.vEdges[0].length) {
         throw new Error(
-          `j should be an integer from 0 to ${ydData.vEdges[0].length}`
+          `j should be an integer from 0 to ${ydData.vEdges[0].length - 1}`
         );
       }
       const newEdge = { ...ydData.vEdges[i][j], ...changes };
       let newdata = { ...ydData };
       newdata.vEdges[i][j] = newEdge;
+      setYDData(newdata);
+    },
+    [ydData]
+  );
+
+  const updateCell = useCallback(
+    (i: number, j: number, changes: Partial<EdgeData>) => {
+      if (!Number.isInteger(i) || i < 0 || i >= ydData.cells.length) {
+        throw new Error(
+          `i should be an integer from 0 to ${ydData.cells.length - 1}`
+        );
+      }
+      if (!Number.isInteger(j) || j < 0 || j >= ydData.cells[0].length) {
+        throw new Error(
+          `j should be an integer from 0 to ${ydData.cells[0].length - 1}`
+        );
+      }
+      const newCell = { ...ydData.cells[i][j], ...changes };
+      let newdata = { ...ydData };
+      newdata.cells[i][j] = newCell;
       setYDData(newdata);
     },
     [ydData]
@@ -124,6 +171,7 @@ function getInitData(numRow: number, numCol: number): YDData {
   let initData: YDData = {
     hEdges: [],
     vEdges: [],
+    cells: [],
   };
   for (let i = 0; i <= numRow; i++) {
     initData.hEdges[i] = [];
@@ -142,6 +190,15 @@ function getInitData(numRow: number, numCol: number): YDData {
         exists: false,
         color: Color.Default,
         thickness: Thickness.Default,
+      };
+    }
+  }
+  for (let i = 0; i < numRow; i++) {
+    initData.cells[i] = [];
+    for (let j = 0; j < numCol; j++) {
+      initData.cells[i][j] = {
+        textColor: Color.Default,
+        text: "",
       };
     }
   }

@@ -1,4 +1,5 @@
-import { EdgeData, YDData } from "../constants/ydData";
+import { Color } from "../constants/enums";
+import { CellData, EdgeData, YDData } from "../constants/ydData";
 
 export function generateTikzCode(d: YDData): string {
   let toJoin: string[] = [];
@@ -6,7 +7,7 @@ export function generateTikzCode(d: YDData): string {
     for (let j = 0; j < d.hEdges[i].length; j++) {
       const e = d.hEdges[i][j];
       if (e.exists) {
-        toJoin.push(hEdgeToTikz(d.hEdges[i][j], j, i));
+        toJoin.push(hEdgeToTikz(e, j, i));
       }
     }
   }
@@ -14,7 +15,15 @@ export function generateTikzCode(d: YDData): string {
     for (let j = 0; j < d.vEdges[i].length; j++) {
       const e = d.vEdges[i][j];
       if (e.exists) {
-        toJoin.push(vEdgeToTikz(d.vEdges[i][j], j, i));
+        toJoin.push(vEdgeToTikz(e, j, i));
+      }
+    }
+  }
+  for (let i = 0; i < d.cells.length; i++) {
+    for (let j = 0; j < d.cells[i].length; j++) {
+      const c = d.cells[i][j];
+      if (c.text !== "") {
+        toJoin.push(cellToTikz(c, j, i));
       }
     }
   }
@@ -52,4 +61,13 @@ function edgeToTikz(
   }
   const prop = props.join(", ");
   return `\\draw[${prop}] ${start} -- ${end};`;
+}
+
+function cellToTikz(c: CellData, x: number, y: number): string {
+  const position: string = `(${x + 0.5}, ${-y - 0.5})`;
+
+  if (c.textColor === Color.Default) {
+    return `\\draw ${position} {${c.text}}`;
+  }
+  return `\\draw[${c.textColor}] ${position} {${c.text}}`;
 }

@@ -37,7 +37,7 @@ export default function EdgeColorTool({
     <div key="edge-color-blank" className="w-2 inline-block"></div>,
   ];
   for (let [, c] of Object.entries(Color)) {
-    if (c === Color.Default) continue;
+    if (c === Color.Black) continue;
     const opt = (
       <EdgeColorButtons
         key={`edge-color-${c}`}
@@ -65,6 +65,10 @@ function EdgeColorButtons({
 }) {
   const className = `w-6 h-6 m-1 rounded-full hover:scale-110 ${getColorClassName(true, color)}`;
   return (
-    <button title={color} className={className} onClick={onClick}></button>
+    <button
+      title={color === Color.Default ? "black" : color}
+      className={className}
+      onClick={onClick}
+    ></button>
   );
 }

@@ -4,7 +4,8 @@ import {
   getColorClassName,
   getThicknessClassName,
 } from "../../utils/classname";
-import { SelectionContext } from "../../App";
+import { SelectedIndexContext } from "../../App";
+import { YDItemType } from "../../constants/enums";
 
 export default function VEdge({
   i,
@@ -25,13 +26,12 @@ export default function VEdge({
     classNameList.push(getThicknessClassName(false, edgeData.thickness));
   }
 
-  const selection = useContext(SelectionContext);
+  const selectedIndex = useContext(SelectedIndexContext);
   if (
-    selection !== null &&
-    selection.isEdge &&
-    !selection.isHorizontal &&
-    i === selection.i &&
-    j === selection.j
+    selectedIndex !== null &&
+    selectedIndex.itemType === YDItemType.VEdge &&
+    i === selectedIndex.i &&
+    j === selectedIndex.j
   ) {
     classNameList.push("selected");
   }

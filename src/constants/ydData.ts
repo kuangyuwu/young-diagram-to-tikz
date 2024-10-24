@@ -1,4 +1,4 @@
-import { Color, Thickness } from "./enums";
+import { Color, Thickness, YDItemType } from "./enums";
 
 export type EdgeData = {
   exists: boolean;
@@ -6,14 +6,19 @@ export type EdgeData = {
   thickness: Thickness;
 };
 
+export type CellData = {
+  textColor: Color;
+  text: string;
+};
+
 export type YDData = {
   hEdges: EdgeData[][];
   vEdges: EdgeData[][];
+  cells: CellData[][];
 };
 
 export type YDIndex = {
   i: number;
   j: number;
-  isEdge: boolean;
-  isHorizontal: boolean;
+  itemType: YDItemType;
 };

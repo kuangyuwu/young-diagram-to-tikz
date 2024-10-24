@@ -1,15 +1,21 @@
 import { EdgeData } from "../../constants/ydData";
+import Cell from "./cell";
 import VEdge from "./v-edge";
 
 export default function VRow({
   i,
   edges,
   getEdgeOnClick,
+  getCellOnClick,
 }: {
   i: number;
   edges: EdgeData[];
   getEdgeOnClick: (
     isHorizontal: boolean,
+    i: number,
+    j: number
+  ) => React.MouseEventHandler<HTMLButtonElement>;
+  getCellOnClick: (
     i: number,
     j: number
   ) => React.MouseEventHandler<HTMLButtonElement>;
@@ -27,10 +33,12 @@ export default function VRow({
     );
     if (j !== edges.length - 1) {
       children.push(
-        <div
-          className="flex justify-center items-center cell-container"
-          key={`cell-container-${i}-${j}`}
-        ></div>
+        <Cell
+          key={`cell-${i}-${j}`}
+          i={i}
+          j={j}
+          cellOnClick={getCellOnClick(i, j)}
+        />
       );
     }
   }

@@ -28,7 +28,7 @@
 }
 
 .non-existent {
-  border-color: lightgray;
+  border-color: rgb(209 213 219); /* gray-300 */
   border-width: 1px;
 }
 .selected {
