@@ -11,7 +11,7 @@ import { YDIndex } from "./constants/ydData.ts";
 export const SelectedIndexContext = createContext<YDIndex | null>(null);
 
 function App() {
-  const { ydData, getYDData, updateYDData } = useYDData(5, 5);
+  const { ydData, getYDData, updateYDData } = useYDData(10, 10);
   const { selectedIndex, updateSelectedIndex, clearSelection } =
     useSelectedIndex();
 

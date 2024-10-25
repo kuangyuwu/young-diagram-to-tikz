@@ -18,7 +18,7 @@ export default function HEdge({
   edgeData: EdgeData;
   createIfNotExist: React.MouseEventHandler<HTMLButtonElement>;
 }) {
-  let classNameList = ["w-12 rounded-sm hover:scale-110"];
+  let classNameList = ["w-8 md:w-12 rounded-sm hover:scale-110"];
   if (!edgeData.exists) {
     classNameList.push("non-existent h-edge-t-default");
   } else {

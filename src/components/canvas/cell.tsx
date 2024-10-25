@@ -12,7 +12,7 @@ export default function Cell({
   cellOnClick: React.MouseEventHandler<HTMLButtonElement>;
 }) {
   let classNameList = [
-    "h-12 w-12 rounded-sm hover:scale-110 border border-gray-300",
+    "h-8 w-8 md:h-12 md:w-12 rounded-sm hover:scale-110 border border-gray-300",
   ];
 
   const selectedIndex = useContext(SelectedIndexContext);
