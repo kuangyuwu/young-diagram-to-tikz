@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { EdgeData } from "../../constants/ydData";
 import {
-  getColorClassName,
+  getEdgeColorClassName,
   getThicknessClassName,
 } from "../../utils/classname";
 import { SelectedIndexContext } from "../../App";
@@ -22,7 +22,7 @@ export default function HEdge({
   if (!edgeData.exists) {
     classNameList.push("non-existent h-edge-t-default");
   } else {
-    classNameList.push(getColorClassName(true, edgeData.color));
+    classNameList.push(getEdgeColorClassName(edgeData.color));
     classNameList.push(getThicknessClassName(true, edgeData.thickness));
   }
 

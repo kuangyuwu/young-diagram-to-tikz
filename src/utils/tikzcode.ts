@@ -51,7 +51,7 @@ function edgeToTikz(
   let props: string[] = [];
   for (let k in d) {
     const key = k as keyof EdgeData;
-    if (key !== "exists" && d[key] !== "default") {
+    if (key !== "exists" && d[key] !== "default" && d[key] !== "black") {
       props.push(d[key]);
     }
   }
@@ -66,8 +66,8 @@ function edgeToTikz(
 function cellToTikz(c: CellData, x: number, y: number): string {
   const position: string = `(${x + 0.5}, ${-y - 0.5})`;
 
-  if (c.textColor === Color.Default) {
-    return `\\draw ${position} {${c.text}}`;
+  if (c.textColor === Color.Black) {
+    return `\\draw ${position} node {${c.text}};`;
   }
-  return `\\draw[${c.textColor}] ${position} {${c.text}}`;
+  return `\\draw[${c.textColor}] ${position} node {${c.text}};`;
 }

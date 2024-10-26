@@ -1,5 +1,4 @@
 export enum Color {
-  Default = "default",
   Black = "black",
   Red = "red",
   Blue = "blue",
@@ -25,5 +24,6 @@ export enum Tools {
   None = 0,
   EdgeColor = 1,
   EdgeThickness = 2,
+  CellTextColor = 6,
   Delete = 9,
 }

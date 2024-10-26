@@ -85,16 +85,16 @@ export default function useYDData(numRow: number, numCol: number) {
   );
 
   const updateYDData = useCallback(
-    (ydIndex: YDIndex, changes: Partial<EdgeData>) => {
+    (ydIndex: YDIndex, changes: Partial<EdgeData> | Partial<CellData>) => {
       switch (ydIndex.itemType) {
         case YDItemType.HEdge:
-          updateHEdge(ydIndex.i, ydIndex.j, changes);
+          updateHEdge(ydIndex.i, ydIndex.j, changes as EdgeData);
           return;
         case YDItemType.VEdge:
-          updateVEdge(ydIndex.i, ydIndex.j, changes);
+          updateVEdge(ydIndex.i, ydIndex.j, changes as EdgeData);
           return;
         case YDItemType.Cell:
-          updateCell(ydIndex.i, ydIndex.j, changes);
+          updateCell(ydIndex.i, ydIndex.j, changes as CellData);
           return;
         default:
           break;
@@ -145,7 +145,7 @@ export default function useYDData(numRow: number, numCol: number) {
   );
 
   const updateCell = useCallback(
-    (i: number, j: number, changes: Partial<EdgeData>) => {
+    (i: number, j: number, changes: Partial<CellData>) => {
       if (!Number.isInteger(i) || i < 0 || i >= ydData.cells.length) {
         throw new Error(
           `i should be an integer from 0 to ${ydData.cells.length - 1}`
@@ -178,7 +178,7 @@ function getInitData(numRow: number, numCol: number): YDData {
     for (let j = 0; j < numCol; j++) {
       initData.hEdges[i][j] = {
         exists: false,
-        color: Color.Default,
+        color: Color.Black,
         thickness: Thickness.Default,
       };
     }
@@ -188,7 +188,7 @@ function getInitData(numRow: number, numCol: number): YDData {
     for (let j = 0; j <= numCol; j++) {
       initData.vEdges[i][j] = {
         exists: false,
-        color: Color.Default,
+        color: Color.Black,
         thickness: Thickness.Default,
       };
     }
@@ -197,7 +197,7 @@ function getInitData(numRow: number, numCol: number): YDData {
     initData.cells[i] = [];
     for (let j = 0; j < numCol; j++) {
       initData.cells[i][j] = {
-        textColor: Color.Default,
+        textColor: Color.Black,
         text: "",
       };
     }

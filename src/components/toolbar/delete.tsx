@@ -26,7 +26,7 @@ export default function DeleteTool({
   const deleteElement = useCallback(() => {
     makeUpdate({
       exists: false,
-      color: Color.Default,
+      color: Color.Black,
       thickness: Thickness.Default,
     });
     setExpandedTool(Tools.None);

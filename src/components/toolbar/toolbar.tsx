@@ -1,5 +1,6 @@
 import { YDItemType } from "../../constants/enums";
 import { CellData, EdgeData, YDIndex } from "../../constants/ydData";
+import CellToolBar from "./cellTools";
 import EdgeToolBar from "./edgeTools";
 
 export default function ToolBar({
@@ -11,7 +12,10 @@ export default function ToolBar({
   selectedIndex: YDIndex | null;
   selectedData: EdgeData | CellData | null;
   clearSelection: () => void;
-  updateYDData: (ydIndex: YDIndex, changes: Partial<EdgeData>) => void;
+  updateYDData: (
+    ydIndex: YDIndex,
+    changes: Partial<EdgeData> | Partial<CellData>
+  ) => void;
 }) {
   return (
     <div className="w-11/12 p-1.5 lg:w-3/4">
@@ -27,7 +31,12 @@ export default function ToolBar({
             clearSelection={clearSelection}
           />
         ) : (
-          <></>
+          <CellToolBar
+            selectedIndex={selectedIndex as YDIndex}
+            selectedData={selectedData as CellData}
+            updateYDData={updateYDData}
+            // clearSelection={clearSelection}
+          />
         )}
       </div>
     </div>

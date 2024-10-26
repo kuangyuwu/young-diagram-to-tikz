@@ -1,15 +1,15 @@
 import { useEffect } from "react";
 import { Color, Tools } from "../../constants/enums";
-import { getColorClassName } from "../../utils/classname";
+import { getEdgeColorClassName } from "../../utils/classname";
 import { EdgeData } from "../../constants/ydData";
 
 export default function EdgeColorTool({
-  color,
+  currColor,
   makeUpdate,
   expandedTool,
   setExpandedTool,
 }: {
-  color: Color;
+  currColor: Color;
   makeUpdate: (newData: Partial<EdgeData>) => void;
   expandedTool: Tools;
   setExpandedTool: (t: Tools) => void;
@@ -37,7 +37,6 @@ export default function EdgeColorTool({
     <div key="edge-color-blank" className="w-2 inline-block"></div>,
   ];
   for (let [, c] of Object.entries(Color)) {
-    if (c === Color.Black) continue;
     const opt = (
       <EdgeColorButtons
         key={`edge-color-${c}`}
@@ -50,7 +49,7 @@ export default function EdgeColorTool({
 
   return (
     <div className="h-8 m-1 rounded-full bg-gray-200 flex flex-nowrap">
-      <EdgeColorButtons color={color} onClick={toggleIsExpanded} />
+      <EdgeColorButtons color={currColor} onClick={toggleIsExpanded} />
       {expandedTool === Tools.EdgeColor ? options : <></>}
     </div>
   );
@@ -63,12 +62,8 @@ function EdgeColorButtons({
   color: Color;
   onClick: React.MouseEventHandler<HTMLButtonElement>;
 }) {
-  const className = `w-6 h-6 m-1 rounded-full hover:scale-110 ${getColorClassName(true, color)}`;
+  const className = `w-6 h-6 m-1 rounded-full hover:scale-110 ${getEdgeColorClassName(color)}`;
   return (
-    <button
-      title={color === Color.Default ? "black" : color}
-      className={className}
-      onClick={onClick}
-    ></button>
+    <button title={color} className={className} onClick={onClick}></button>
   );
 }

@@ -11,17 +11,19 @@ export function getThicknessClassName(
   return className;
 }
 
-export function getColorClassName(isEdge: boolean, c: Color): string {
+export function getEdgeColorClassName(c: Color): string {
   // using full tailwind class names to prevent them from being purged
-  if (isEdge) {
-    return c === Color.Black
-      ? "bg-black"
-      : c === Color.Blue
-        ? "bg-blue-700"
-        : c === Color.Red
-          ? "bg-red-700"
-          : "bg-black";
-  }
+  return c === Color.Black
+    ? "bg-black"
+    : c === Color.Blue
+      ? "bg-blue-700"
+      : c === Color.Red
+        ? "bg-red-700"
+        : "bg-black";
+}
+
+export function getTextColorClassName(c: Color): string {
+  // using full tailwind class names to prevent them from being purged
   return c === Color.Black
     ? "text-black"
     : c === Color.Blue

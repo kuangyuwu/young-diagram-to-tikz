@@ -33,6 +33,7 @@ export default function Canvas({
     i: number,
     j: number
   ): React.MouseEventHandler<HTMLButtonElement> {
+    const cell: YDIndex = { i: i, j: j, itemType: YDItemType.Cell };
     const neighboringEdges: Array<YDIndex> = [
       { i: i, j: j, itemType: YDItemType.HEdge },
       { i: i + 1, j: j, itemType: YDItemType.HEdge },
@@ -40,6 +41,7 @@ export default function Canvas({
       { i: i, j: j + 1, itemType: YDItemType.VEdge },
     ];
     function onClick(_event: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
+      updateSelectedIndex(cell);
       for (const e of neighboringEdges) {
         updateYDData(e, { exists: true });
       }
@@ -63,6 +65,7 @@ export default function Canvas({
           key={`v-row-${i}`}
           i={i}
           edges={ydData.vEdges[i]}
+          cells={ydData.cells[i]}
           getEdgeOnClick={getEdgeOnClick}
           getCellOnClick={getCellOnClick}
         />

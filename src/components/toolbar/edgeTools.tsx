@@ -28,13 +28,13 @@ export default function EdgeToolBar({
   return (
     <>
       <EdgeColorTool
-        color={selectedData.color}
+        currColor={selectedData.color}
         makeUpdate={makeUpdate}
         expandedTool={expandedTool}
         setExpandedTool={setExpandedTool}
       />
       <EdgeThicknessTool
-        thickness={selectedData.thickness}
+        currThickness={selectedData.thickness}
         makeUpdate={makeUpdate}
         expandedTool={expandedTool}
         setExpandedTool={setExpandedTool}

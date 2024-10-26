@@ -1,15 +1,17 @@
-import { EdgeData } from "../../constants/ydData";
+import { CellData, EdgeData } from "../../constants/ydData";
 import Cell from "./cell";
 import VEdge from "./v-edge";
 
 export default function VRow({
   i,
   edges,
+  cells,
   getEdgeOnClick,
   getCellOnClick,
 }: {
   i: number;
   edges: EdgeData[];
+  cells: CellData[];
   getEdgeOnClick: (
     isHorizontal: boolean,
     i: number,
@@ -37,6 +39,7 @@ export default function VRow({
           key={`cell-${i}-${j}`}
           i={i}
           j={j}
+          cellData={cells[j]}
           cellOnClick={getCellOnClick(i, j)}
         />
       );

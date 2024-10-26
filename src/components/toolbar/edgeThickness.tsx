@@ -4,12 +4,12 @@ import { EdgeData } from "../../constants/ydData";
 import { getThicknessClassName } from "../../utils/classname";
 
 export default function EdgeThicknessTool({
-  thickness,
+  currThickness,
   makeUpdate,
   expandedTool,
   setExpandedTool,
 }: {
-  thickness: Thickness;
+  currThickness: Thickness;
   makeUpdate: (newData: Partial<EdgeData>) => void;
   expandedTool: Tools;
   setExpandedTool: (t: Tools) => void;
@@ -49,7 +49,10 @@ export default function EdgeThicknessTool({
 
   return (
     <div className="h-8 m-1 rounded-full bg-gray-200 flex flex-nowrap">
-      <EdgeThicknessButtons thickness={thickness} onClick={toggleIsExpanded} />
+      <EdgeThicknessButtons
+        thickness={currThickness}
+        onClick={toggleIsExpanded}
+      />
       {expandedTool === Tools.EdgeThickness ? options : <></>}
     </div>
   );
