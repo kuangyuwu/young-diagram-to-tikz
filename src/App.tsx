@@ -1,9 +1,6 @@
-// import Canvas from "./components/canvas/canvas.tsx";
 import useSelectedIndex from "./hooks/useSelectedIndex.tsx";
 import useYDData from "./hooks/useYDData.tsx";
-// import Result from "./components/result/result.tsx";
 import Title from "./components/title.tsx";
-// import ToolBar from "./components/toolbar/toolbar.tsx";
 import { generateTikzCode } from "./utils/tikzcode.ts";
 import { createContext, lazy, Suspense } from "react";
 import { YDIndex } from "./constants/ydData.ts";
@@ -23,8 +20,8 @@ function App() {
   const tikzCode = generateTikzCode(ydData);
 
   return (
-    <div className="flex justify-center">
-      <div className="bg-yellow-100 w-full flex flex-wrap justify-center text-nowrap xl:w-4/5">
+    <div className="bg-yellow-100 w-full flex justify-center">
+      <div className="w-full xl:w-4/5 flex flex-wrap justify-center">
         <Title />
         <Suspense fallback={<></>}>
           <ToolBar
