@@ -1,8 +1,8 @@
 import { useCallback, useState } from "react";
-import { CellData, YDIndex } from "../../constants/ydData";
-import { Tools } from "../../constants/enums";
-import CellTextTool from "./cellText";
-import CellTextColorTool from "./cellTextColor";
+import { CellData, YDIndex } from "../../../constants/ydData";
+import { Tools } from "../../../constants/enums";
+import CellTextTool from "./text";
+import CellTextColorTool from "./textColor";
 
 export default function CellToolBar({
   selectedIndex,

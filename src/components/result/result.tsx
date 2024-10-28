@@ -1,5 +1,7 @@
-import Preview from "./preview";
+import { lazy, Suspense } from "react";
 import TikzBox from "./tikzbox";
+
+const Preview = lazy(() => import("./preview.tsx"));
 
 export default function Result({
   tikzCode,
@@ -11,7 +13,9 @@ export default function Result({
   return (
     <div className="w-11/12 flex flex-wrap flex-shrink lg:w-3/4">
       <TikzBox tikzCode={tikzCode} />
-      <Preview tikzCode={tikzCode} clearSelection={clearSelection} />
+      <Suspense fallback={<></>}>
+        <Preview tikzCode={tikzCode} clearSelection={clearSelection} />
+      </Suspense>
     </div>
   );
 }

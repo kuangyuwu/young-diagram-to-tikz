@@ -3,23 +3,23 @@
 @tailwind utilities;
 
 .delete-button {
-  background-image: url("../public/delete.png");
-  background-size: 22px 22px;
+  background-image: url("../public/delete.svg");
+  background-size: 24px 24px;
   background-position: center;
   background-repeat: no-repeat;
 }
 
 .vertex-box {
-  height: 10px;
-  width: 10px;
+  height: 8px;
+  width: 8px;
 }
 .h-edge-container {
-  height: 10px;
+  height: 8px;
   width: 36px;
 }
 .v-edge-container {
   height: 36px;
-  width: 10px;
+  width: 8px;
 }
 .cell-container {
   height: 36px;
@@ -32,15 +32,15 @@
   }
   .h-edge-container {
     height: 10px;
-    width: 54px;
+    width: 50px;
   }
   .v-edge-container {
-    height: 54px;
+    height: 50px;
     width: 10px;
   }
   .cell-container {
-    height: 54px;
-    width: 54px;
+    height: 50px;
+    width: 50px;
   }
 }
 

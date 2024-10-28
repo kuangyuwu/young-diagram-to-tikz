@@ -1,5 +1,5 @@
 import { FormEvent, useEffect, useRef } from "react";
-import { CellData } from "../../constants/ydData";
+import { CellData } from "../../../constants/ydData";
 
 export default function CellTextTool({
   text,
@@ -21,8 +21,8 @@ export default function CellTextTool({
     const formData = new FormData(form as HTMLFormElement);
 
     const newText = formData.get("text") as string;
-    if (newText.length > 10) {
-      alert("Exceeds max length (10)");
+    if (newText.length > 15) {
+      alert("Exceeds max length (15)");
       return;
     }
     makeUpdate({ text: newText });

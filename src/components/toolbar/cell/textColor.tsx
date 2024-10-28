@@ -1,7 +1,7 @@
 import { useEffect } from "react";
-import { Color, Tools } from "../../constants/enums";
-import { CellData } from "../../constants/ydData";
-import { getTextColorClassName } from "../../utils/classname";
+import { Color, Tools } from "../../../constants/enums";
+import { CellData } from "../../../constants/ydData";
+import { getTextColorClassName } from "../../../utils/classname";
 
 export default function CellTextColorTool({
   currTextColor,

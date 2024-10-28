@@ -1,12 +1,16 @@
-import Canvas from "./components/canvas/canvas.tsx";
+// import Canvas from "./components/canvas/canvas.tsx";
 import useSelectedIndex from "./hooks/useSelectedIndex.tsx";
 import useYDData from "./hooks/useYDData.tsx";
-import Result from "./components/result/result.tsx";
+// import Result from "./components/result/result.tsx";
 import Title from "./components/title.tsx";
-import ToolBar from "./components/toolbar/toolbar.tsx";
+// import ToolBar from "./components/toolbar/toolbar.tsx";
 import { generateTikzCode } from "./utils/tikzcode.ts";
-import { createContext } from "react";
+import { createContext, lazy, Suspense } from "react";
 import { YDIndex } from "./constants/ydData.ts";
+
+const ToolBar = lazy(() => import("./components/toolbar/toolbar.tsx"));
+const Canvas = lazy(() => import("./components/canvas/canvas.tsx"));
+const Result = lazy(() => import("./components/result/result.tsx"));
 
 export const SelectedIndexContext = createContext<YDIndex | null>(null);
 
@@ -22,20 +26,26 @@ function App() {
     <div className="flex justify-center">
       <div className="bg-yellow-100 w-full flex flex-wrap justify-center text-nowrap xl:w-4/5">
         <Title />
-        <ToolBar
-          selectedIndex={selectedIndex}
-          selectedData={selectedData}
-          clearSelection={clearSelection}
-          updateYDData={updateYDData}
-        />
-        <SelectedIndexContext.Provider value={selectedIndex}>
-          <Canvas
-            ydData={ydData}
+        <Suspense fallback={<></>}>
+          <ToolBar
+            selectedIndex={selectedIndex}
+            selectedData={selectedData}
+            clearSelection={clearSelection}
             updateYDData={updateYDData}
-            updateSelectedIndex={updateSelectedIndex}
           />
+        </Suspense>
+        <SelectedIndexContext.Provider value={selectedIndex}>
+          <Suspense fallback={<></>}>
+            <Canvas
+              ydData={ydData}
+              updateYDData={updateYDData}
+              updateSelectedIndex={updateSelectedIndex}
+            />
+          </Suspense>
         </SelectedIndexContext.Provider>
-        <Result tikzCode={tikzCode} clearSelection={clearSelection} />
+        <Suspense fallback={<></>}>
+          <Result tikzCode={tikzCode} clearSelection={clearSelection} />
+        </Suspense>
       </div>
     </div>
   );

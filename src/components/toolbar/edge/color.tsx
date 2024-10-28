@@ -1,7 +1,7 @@
 import { useEffect } from "react";
-import { Color, Tools } from "../../constants/enums";
-import { getEdgeColorClassName } from "../../utils/classname";
-import { EdgeData } from "../../constants/ydData";
+import { Color, Tools } from "../../../constants/enums";
+import { getEdgeColorClassName } from "../../../utils/classname";
+import { EdgeData } from "../../../constants/ydData";
 
 export default function EdgeColorTool({
   currColor,

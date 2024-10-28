@@ -1,9 +1,9 @@
 import { useCallback, useState } from "react";
-import { EdgeData, YDIndex } from "../../constants/ydData";
-import EdgeColorTool from "./edgeColor";
-import DeleteTool from "./delete";
-import { Tools } from "../../constants/enums";
-import EdgeThicknessTool from "./edgeThickness";
+import { EdgeData, YDIndex } from "../../../constants/ydData";
+import EdgeColorTool from "./color";
+import EdgeDeleteTool from "./delete";
+import { Tools } from "../../../constants/enums";
+import EdgeThicknessTool from "./thickness";
 
 export default function EdgeToolBar({
   selectedIndex,
@@ -39,7 +39,7 @@ export default function EdgeToolBar({
         expandedTool={expandedTool}
         setExpandedTool={setExpandedTool}
       />
-      <DeleteTool
+      <EdgeDeleteTool
         makeUpdate={makeUpdate}
         expandedTool={expandedTool}
         setExpandedTool={setExpandedTool}

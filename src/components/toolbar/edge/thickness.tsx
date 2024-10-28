@@ -1,7 +1,7 @@
 import { useEffect } from "react";
-import { Thickness, Tools } from "../../constants/enums";
-import { EdgeData } from "../../constants/ydData";
-import { getThicknessClassName } from "../../utils/classname";
+import { Thickness, Tools } from "../../../constants/enums";
+import { EdgeData } from "../../../constants/ydData";
+import { getThicknessClassName } from "../../../utils/classname";
 
 export default function EdgeThicknessTool({
   currThickness,

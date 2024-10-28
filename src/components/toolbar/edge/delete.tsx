@@ -1,8 +1,8 @@
 import { useCallback, useEffect } from "react";
-import { EdgeData } from "../../constants/ydData";
-import { Color, Thickness, Tools } from "../../constants/enums";
+import { EdgeData } from "../../../constants/ydData";
+import { Color, Thickness, Tools } from "../../../constants/enums";
 
-export default function DeleteTool({
+export default function EdgeDeleteTool({
   makeUpdate,
   expandedTool,
   setExpandedTool,

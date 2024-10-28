@@ -1,7 +1,9 @@
+import { lazy, Suspense } from "react";
 import { YDItemType } from "../../constants/enums";
 import { CellData, EdgeData, YDIndex } from "../../constants/ydData";
-import CellToolBar from "./cellTools";
-import EdgeToolBar from "./edgeTools";
+
+const EdgeToolBar = lazy(() => import("./edge/edgeToolBar.tsx"));
+const CellToolBar = lazy(() => import("./cell/cellToolBar.tsx"));
 
 export default function ToolBar({
   selectedIndex,
@@ -24,19 +26,23 @@ export default function ToolBar({
           <></>
         ) : selectedIndex.itemType === YDItemType.HEdge ||
           selectedIndex.itemType === YDItemType.VEdge ? (
-          <EdgeToolBar
-            selectedIndex={selectedIndex as YDIndex}
-            selectedData={selectedData as EdgeData}
-            updateYDData={updateYDData}
-            clearSelection={clearSelection}
-          />
+          <Suspense fallback={<></>}>
+            <EdgeToolBar
+              selectedIndex={selectedIndex as YDIndex}
+              selectedData={selectedData as EdgeData}
+              updateYDData={updateYDData}
+              clearSelection={clearSelection}
+            />
+          </Suspense>
         ) : (
-          <CellToolBar
-            selectedIndex={selectedIndex as YDIndex}
-            selectedData={selectedData as CellData}
-            updateYDData={updateYDData}
-            // clearSelection={clearSelection}
-          />
+          <Suspense fallback={<></>}>
+            <CellToolBar
+              selectedIndex={selectedIndex as YDIndex}
+              selectedData={selectedData as CellData}
+              updateYDData={updateYDData}
+              // clearSelection={clearSelection}
+            />
+          </Suspense>
         )}
       </div>
     </div>
