@@ -29,25 +29,32 @@ export default function CellTextTool({
   }
 
   return (
-    <div className="h-8 m-1 rounded-full bg-gray-200 flex flex-nowrap font-mono">
+    <div className="h-8 m-1 rounded-full bg-lime-100 flex flex-nowrap font-mono">
       <div className="w-3 inline-block"></div>
-      <form method="post" onSubmit={onSubmit}>
+      <form
+        method="post"
+        onSubmit={onSubmit}
+        className="text-sm flex items-center"
+      >
         Text:
-        <div className="w-32 h-6 m-1 rounded-full bg-white inline-block">
+        <div className="h-6 w-32 m-1 rounded-full bg-white inline-block">
           <div className="w-2 inline-block"></div>
           <input
             name="text"
             type="text"
-            className="w-28"
+            className="w-28 leading-6 text-sm"
             autoComplete="off"
             ref={inputRef}
           ></input>
         </div>
         <button
-          className="h-6 w-6 m-1 px-1 rounded-full bg-green-200 text-green-600 overflow-hidden hover:scale-110"
+          className="h-6 w-6 m-1 px-1 rounded-full bg-lime-300 overflow-hidden hover:scale-110"
           type="submit"
         >
-          ✔️
+          <img
+            className="h-6 w-6 inline-block"
+            src="../../../../public/check.svg"
+          ></img>
         </button>
       </form>
     </div>

@@ -48,7 +48,7 @@ export default function EdgeThicknessTool({
   }
 
   return (
-    <div className="h-8 m-1 rounded-full bg-gray-200 flex flex-nowrap">
+    <div className="h-8 m-1 rounded-full bg-amber-100 flex flex-nowrap items-center">
       <EdgeThicknessButtons
         thickness={currThickness}
         onClick={toggleIsExpanded}
@@ -69,7 +69,7 @@ function EdgeThicknessButtons({
   return (
     <button
       title={thickness}
-      className={"w-6 h-6 m-1 rounded-full bg-white hover:scale-110"}
+      className={"w-6 h-6 mx-1 rounded-full bg-white hover:scale-110"}
       onClick={onClick}
     >
       <div className={className}></div>

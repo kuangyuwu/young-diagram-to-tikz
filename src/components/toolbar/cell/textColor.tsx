@@ -48,7 +48,7 @@ export default function CellTextColorTool({
   }
 
   return (
-    <div className="h-8 m-1 rounded-full bg-gray-200 flex flex-nowrap">
+    <div className="h-8 m-1 rounded-full bg-amber-100 flex flex-nowrap items-center">
       <CellTextColorButtons
         textColor={currTextColor}
         onClick={toggleIsExpanded}
@@ -65,7 +65,7 @@ function CellTextColorButtons({
   textColor: Color;
   onClick: React.MouseEventHandler<HTMLButtonElement>;
 }) {
-  const className = `w-6 h-6 m-1 rounded-full bg-white font-serif hover:scale-110 ${getTextColorClassName(textColor)}`;
+  const className = `w-6 h-6 mx-1 rounded-full bg-white font-serif hover:scale-110 ${getTextColorClassName(textColor)}`;
   return (
     <button title={textColor} className={className} onClick={onClick}>
       T

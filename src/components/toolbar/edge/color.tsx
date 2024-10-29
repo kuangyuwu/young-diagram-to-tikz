@@ -48,7 +48,7 @@ export default function EdgeColorTool({
   }
 
   return (
-    <div className="h-8 m-1 rounded-full bg-gray-200 flex flex-nowrap">
+    <div className="h-8 m-1 rounded-full bg-amber-100 flex flex-nowrap items-center">
       <EdgeColorButtons color={currColor} onClick={toggleIsExpanded} />
       {expandedTool === Tools.EdgeColor ? options : <></>}
     </div>
@@ -62,7 +62,7 @@ function EdgeColorButtons({
   color: Color;
   onClick: React.MouseEventHandler<HTMLButtonElement>;
 }) {
-  const className = `w-6 h-6 m-1 rounded-full hover:scale-110 ${getEdgeColorClassName(color)}`;
+  const className = `w-6 h-6 mx-1 rounded-full hover:scale-110 ${getEdgeColorClassName(color)}`;
   return (
     <button title={color} className={className} onClick={onClick}></button>
   );
