@@ -20,8 +20,8 @@ export default function Help() {
       </button>
       {isHelpVisible ? (
         <div className="bg-yellow-200 w-3/4 sm:w-1/2 h-64 sm:h-auto absolute top-16 right-4 z-50 rounded-3xl p-6 text-sm overflow-scroll">
-          1. Click on a cell (square) to create its four edges, or to add text
-          in it.
+          1. Click on a cell &#40;square&#41; to create its four edges, or to
+          add text in it &#40;wrap LaTeX code in $...$&#41;.
           <div className="h-3"></div>
           2. Click on an edge to change its color and thickness.
           <div className="h-3"></div>

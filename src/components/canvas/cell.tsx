@@ -16,7 +16,7 @@ export default function Cell({
   cellOnClick: React.MouseEventHandler<HTMLButtonElement>;
 }) {
   let classNameList = [
-    "h-8 w-8 md:h-11 md:w-11 rounded-sm hover:scale-110 border border-gray-300 font-mono text-sm overflow-auto",
+    "h-8 w-8 md:h-11 md:w-11 rounded-sm hover:scale-110 border border-gray-300 font-mono text-xs overflow-auto",
   ];
 
   const selectedIndex = useContext(SelectedIndexContext);

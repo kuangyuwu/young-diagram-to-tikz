@@ -86,8 +86,10 @@ export default function Canvas({
         className="bg-amber-100 w-8 h-8 absolute right-4 top-4 rounded-full flex justify-center items-center hover:scale-110"
         title="reset"
         onClick={() => {
-          resetYDData();
-          clearSelection();
+          if (confirm("Reset the Young diagram?")) {
+            resetYDData();
+            clearSelection();
+          }
         }}
       >
         <div className="h-6 w-6 refresh-svg"></div>
