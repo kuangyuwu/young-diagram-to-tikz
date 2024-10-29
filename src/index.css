@@ -26,6 +26,12 @@
   background-position: center;
   background-repeat: no-repeat;
 }
+.refresh-svg {
+  background-image: url("../public/refresh.svg");
+  background-size: 24px 24px;
+  background-position: center;
+  background-repeat: no-repeat;
+}
 
 .vertex-box {
   height: 8px;

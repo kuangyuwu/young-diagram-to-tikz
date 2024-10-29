@@ -12,7 +12,7 @@ const Result = lazy(() => import("./components/result/result.tsx"));
 export const SelectedIndexContext = createContext<YDIndex | null>(null);
 
 function App() {
-  const { ydData, getYDData, updateYDData } = useYDData(10, 10);
+  const { ydData, getYDData, updateYDData, resetYDData } = useYDData(10, 10);
   const { selectedIndex, updateSelectedIndex, clearSelection } =
     useSelectedIndex();
 
@@ -36,7 +36,9 @@ function App() {
             <Canvas
               ydData={ydData}
               updateYDData={updateYDData}
+              resetYDData={resetYDData}
               updateSelectedIndex={updateSelectedIndex}
+              clearSelection={clearSelection}
             />
           </Suspense>
         </SelectedIndexContext.Provider>

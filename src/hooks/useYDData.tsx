@@ -16,6 +16,10 @@ export default function useYDData(numRow: number, numCol: number) {
   const initData = getInitData(numRow, numCol);
   const [ydData, setYDData] = useState<YDData>(initData);
 
+  const resetYDData = useCallback(() => {
+    setYDData(getInitData(numRow, numCol));
+  }, []);
+
   const getYDData = useCallback(
     (ydIndex: YDIndex): EdgeData | CellData => {
       switch (ydIndex.itemType) {
@@ -164,7 +168,7 @@ export default function useYDData(numRow: number, numCol: number) {
     [ydData]
   );
 
-  return { ydData: ydData, getYDData: getYDData, updateYDData: updateYDData };
+  return { ydData, getYDData, updateYDData, resetYDData };
 }
 
 function getInitData(numRow: number, numCol: number): YDData {

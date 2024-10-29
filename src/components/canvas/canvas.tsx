@@ -6,11 +6,15 @@ import VRow from "./v-row";
 export default function Canvas({
   ydData,
   updateYDData,
+  resetYDData,
   updateSelectedIndex,
+  clearSelection,
 }: {
   ydData: YDData;
   updateYDData: (ydIndex: YDIndex, changes: Partial<EdgeData>) => void;
+  resetYDData: () => void;
   updateSelectedIndex: (ydIndex: YDIndex) => void;
+  clearSelection: () => void;
 }) {
   function getEdgeOnClick(
     isHorizontal: boolean,
@@ -74,10 +78,19 @@ export default function Canvas({
   }
 
   return (
-    <div className="w-11/12 p-1.5 lg:w-3/4">
-      <div className="bg-white w-auto p-6 rounded-3xl overflow-auto flex sm:justify-center items-center">
+    <div className="w-11/12 p-1.5 lg:w-3/4 relative">
+      <div className="bg-white w-auto p-12 rounded-3xl flex sm:justify-center items-center overflow-auto">
         <div>{child}</div>
       </div>
+      <button
+        className="bg-amber-100 w-8 h-8 absolute right-4 top-4 rounded-full flex justify-center items-center hover:scale-110 "
+        onClick={() => {
+          resetYDData();
+          clearSelection();
+        }}
+      >
+        <div className="h-6 w-6 refresh-svg"></div>
+      </button>
     </div>
   );
 }
