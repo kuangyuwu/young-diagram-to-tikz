@@ -30,7 +30,7 @@ export default function Preview({
           </div>
         ) : (
           <button
-            className="bg-orange-100 w-40 h-10 rounded-full font-mono"
+            className="bg-amber-100 text-amber-600 w-40 h-10 rounded-full font-mono"
             title="Show Preview"
             onClick={() => {
               setShowPreview(true);
