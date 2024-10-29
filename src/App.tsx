@@ -4,6 +4,7 @@ import Title from "./components/title.tsx";
 import { generateTikzCode } from "./utils/tikzcode.ts";
 import { createContext, lazy, Suspense } from "react";
 import { YDIndex } from "./constants/ydData.ts";
+import Help from "./components/help.tsx";
 
 const ToolBar = lazy(() => import("./components/toolbar/toolbar.tsx"));
 const Canvas = lazy(() => import("./components/canvas/canvas.tsx"));
@@ -20,8 +21,9 @@ function App() {
   const tikzCode = generateTikzCode(ydData);
 
   return (
-    <div className="bg-yellow-100 w-full flex justify-center">
+    <div className="bg-yellow-100 w-full flex justify-center font-mono">
       <div className="w-full xl:w-4/5 flex flex-wrap justify-center">
+        <Help />
         <Title />
         <Suspense fallback={<></>}>
           <ToolBar

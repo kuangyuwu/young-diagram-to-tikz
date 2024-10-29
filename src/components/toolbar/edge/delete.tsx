@@ -42,11 +42,11 @@ export default function EdgeDeleteTool({
       ></button>
       {expandedTool === Tools.Delete ? (
         <>
-          <div className="w-14 h-5 m-1 font-mono text-sm inline-block align-middle">
+          <div className="w-14 h-5 m-1 text-sm inline-block align-middle">
             Delete?
           </div>
           <button
-            className="w-10 h-6 m-1 rounded-full bg-red-300 text-red-600 font-mono text-sm"
+            className="w-10 h-6 m-1 rounded-full bg-red-300 text-red-600 text-sm"
             onClick={deleteElement}
           >
             Yes

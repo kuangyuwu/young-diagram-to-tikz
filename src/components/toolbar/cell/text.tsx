@@ -29,7 +29,7 @@ export default function CellTextTool({
   }
 
   return (
-    <div className="h-8 m-1 rounded-full bg-lime-100 flex flex-nowrap font-mono">
+    <div className="h-8 m-1 rounded-full bg-lime-100 flex flex-nowrap">
       <div className="w-3 inline-block"></div>
       <form
         method="post"

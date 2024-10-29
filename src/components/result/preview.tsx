@@ -30,8 +30,8 @@ export default function Preview({
           </div>
         ) : (
           <button
-            className="bg-amber-100 text-amber-600 w-40 h-10 rounded-full font-mono hover:scale-105"
-            title="Show Preview"
+            className="bg-amber-100 text-amber-600 w-40 h-10 rounded-full hover:scale-105"
+            title="show preview"
             onClick={() => {
               setShowPreview(true);
               clearSelection();
