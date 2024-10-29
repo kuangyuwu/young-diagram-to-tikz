@@ -2,7 +2,25 @@
 @tailwind components;
 @tailwind utilities;
 
-.delete-button {
+.check-svg {
+  background-image: url("../public/check.svg");
+  background-size: 24px 24px;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.content-copy-svg {
+  background-image: url("../public/content_copy.svg");
+  background-size: 24px 24px;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.copied-svg {
+  background-image: url("../public/copied.svg");
+  background-size: 24px 24px;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.delete-svg {
   background-image: url("../public/delete.svg");
   background-size: 24px 24px;
   background-position: center;

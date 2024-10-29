@@ -48,13 +48,10 @@ export default function CellTextTool({
           ></input>
         </div>
         <button
-          className="h-6 w-6 m-1 px-1 rounded-full bg-lime-300 overflow-hidden hover:scale-110"
+          className="h-6 w-6 m-1 px-1 rounded-full bg-lime-300 overflow-hidden hover:scale-110 flex justify-center items-center"
           type="submit"
         >
-          <img
-            className="h-6 w-6 inline-block"
-            src="../../../../public/check.svg"
-          ></img>
+          <div className="w-6 h-6 check-svg inline-block"></div>
         </button>
       </form>
     </div>

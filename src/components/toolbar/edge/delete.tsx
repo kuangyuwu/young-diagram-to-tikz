@@ -37,7 +37,7 @@ export default function EdgeDeleteTool({
     <div className="h-8 m-1 rounded-full bg-red-100 flex flex-nowrap items-center">
       <button
         title="delete"
-        className="w-6 h-6 m-1 rounded-full hover:scale-110 delete-button"
+        className="w-6 h-6 m-1 rounded-full hover:scale-110 delete-svg"
         onClick={toggleIsExpanded}
       ></button>
       {expandedTool === Tools.Delete ? (

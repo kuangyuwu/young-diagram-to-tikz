@@ -21,12 +21,9 @@ export default function TikzBox({ tikzCode }: { tikzCode: string }) {
             onClick={onClick}
           >
             {isCopied ? (
-              <img className="h-6 w-6" src="../../../public/copied.svg"></img>
+              <div className="h-6 w-6 copied-svg"></div>
             ) : (
-              <img
-                className="h-6 w-6"
-                src="../../../public/content_copy.svg"
-              ></img>
+              <div className="h-6 w-6 content-copy-svg"></div>
             )}
           </button>
           <SyntaxHighlighter language="latex" style={tomorrow}>
