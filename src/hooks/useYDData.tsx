@@ -14,6 +14,7 @@ export default function useYDData(numRow: number, numCol: number) {
   }
 
   const initData = getInitData(numRow, numCol);
+  makeDemoYDData(initData);
   const [ydData, setYDData] = useState<YDData>(initData);
 
   const resetYDData = useCallback(() => {
@@ -206,5 +207,36 @@ function getInitData(numRow: number, numCol: number): YDData {
       };
     }
   }
+
   return initData;
+}
+
+function makeDemoYDData(d: YDData) {
+  d.hEdges[0][0].exists = true;
+  d.hEdges[0][1].exists = true;
+  d.hEdges[0][2].exists = true;
+  d.hEdges[1][0].exists = true;
+  d.hEdges[1][1].exists = true;
+  d.hEdges[1][2].exists = true;
+  d.hEdges[2][0].exists = true;
+  d.hEdges[1][0].color = Color.Red;
+  d.hEdges[1][0].thickness = Thickness.VeryThick;
+  d.hEdges[2][0].color = Color.Red;
+  d.hEdges[2][0].thickness = Thickness.VeryThick;
+
+  d.vEdges[0][0].exists = true;
+  d.vEdges[0][1].exists = true;
+  d.vEdges[0][2].exists = true;
+  d.vEdges[0][3].exists = true;
+  d.vEdges[1][0].exists = true;
+  d.vEdges[1][1].exists = true;
+  d.vEdges[1][0].color = Color.Red;
+  d.vEdges[1][0].thickness = Thickness.VeryThick;
+  d.vEdges[1][1].color = Color.Red;
+  d.vEdges[1][1].thickness = Thickness.VeryThick;
+
+  d.cells[0][0].text = "1";
+  d.cells[0][1].text = "2";
+  d.cells[1][0].text = "$\\pi$";
+  d.cells[1][0].textColor = Color.Red;
 }

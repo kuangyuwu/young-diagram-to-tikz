@@ -62,8 +62,14 @@ function EdgeColorButtons({
   color: Color;
   onClick: React.MouseEventHandler<HTMLButtonElement>;
 }) {
-  const className = `w-6 h-6 mx-1 rounded-full hover:scale-110 ${getEdgeColorClassName(color)}`;
+  const className = `w-5 h-5 rounded-full ${getEdgeColorClassName(color)}`;
   return (
-    <button title={color} className={className} onClick={onClick}></button>
+    <button
+      title={color}
+      className="bg-white w-6 h-6 mx-1 rounded-full hover:scale-110 flex items-center justify-center"
+      onClick={onClick}
+    >
+      <div className={className}></div>
+    </button>
   );
 }

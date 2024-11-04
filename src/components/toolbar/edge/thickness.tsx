@@ -65,11 +65,13 @@ function EdgeThicknessButtons({
   thickness: Thickness;
   onClick: React.MouseEventHandler<HTMLButtonElement>;
 }) {
-  const className = `w-6 rounded-full bg-black ${getThicknessClassName(true, thickness)}`;
+  const className = `w-5 rounded-full bg-black ${getThicknessClassName(true, thickness)}`;
   return (
     <button
       title={thickness}
-      className={"w-6 h-6 mx-1 rounded-full bg-white hover:scale-110"}
+      className={
+        "w-6 h-6 mx-1 rounded-full bg-white hover:scale-110 flex justify-center items-center"
+      }
       onClick={onClick}
     >
       <div className={className}></div>

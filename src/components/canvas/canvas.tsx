@@ -1,6 +1,7 @@
 import { YDItemType } from "../../constants/enums";
 import { EdgeData, YDData, YDIndex } from "../../constants/ydData";
 import HRow from "./h-row";
+import ResetButton from "./reset";
 import VRow from "./v-row";
 
 export default function Canvas({
@@ -82,18 +83,10 @@ export default function Canvas({
       <div className="bg-white w-auto p-12 rounded-3xl flex sm:justify-center items-center overflow-auto">
         <div>{child}</div>
       </div>
-      <button
-        className="bg-amber-100 w-8 h-8 absolute right-4 top-4 rounded-full flex justify-center items-center hover:scale-110"
-        title="reset"
-        onClick={() => {
-          if (confirm("Reset the Young diagram?")) {
-            resetYDData();
-            clearSelection();
-          }
-        }}
-      >
-        <div className="h-6 w-6 refresh-svg"></div>
-      </button>
+      <ResetButton
+        resetYDData={resetYDData}
+        clearSelection={clearSelection}
+      ></ResetButton>
     </div>
   );
 }

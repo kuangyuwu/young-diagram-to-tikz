@@ -15,7 +15,7 @@ export default function TikzBox({ tikzCode }: { tikzCode: string }) {
   return (
     <div className="w-full p-1.5 md:w-1/2">
       <div className="bg-white w-auto h-96 rounded-3xl text-xs flex justify-center items-center">
-        <div className="w-5/6 h-5/6 overflow-auto relative">
+        <div className="w-5/6 h-5/6 overflow-hidden relative">
           <button
             className="bg-amber-100 w-8 h-8 absolute right-0 top-0 rounded-full flex justify-center items-center hover:scale-110"
             title="copy"
@@ -27,9 +27,11 @@ export default function TikzBox({ tikzCode }: { tikzCode: string }) {
               <div className="h-5 w-5 content-copy-svg"></div>
             )}
           </button>
-          <SyntaxHighlighter language="latex" style={tomorrow}>
-            {tikzCode}
-          </SyntaxHighlighter>
+          <div className="h-full w-full overflow-auto">
+            <SyntaxHighlighter language="latex" style={tomorrow}>
+              {tikzCode}
+            </SyntaxHighlighter>
+          </div>
         </div>
       </div>
     </div>

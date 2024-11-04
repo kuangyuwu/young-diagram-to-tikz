@@ -3,43 +3,43 @@
 @tailwind utilities;
 
 .check-svg {
-  background-image: url("../public/check.svg");
+  background-image: url("../check.svg");
   background-size: 24px 24px;
   background-position: center;
   background-repeat: no-repeat;
 }
 .close-svg {
-  background-image: url("../public/close.svg");
+  background-image: url("../close.svg");
   background-size: 24px 24px;
   background-position: center;
   background-repeat: no-repeat;
 }
 .content-copy-svg {
-  background-image: url("../public/content_copy.svg");
+  background-image: url("../content_copy.svg");
   background-size: 20px 20px;
   background-position: center;
   background-repeat: no-repeat;
 }
 .copied-svg {
-  background-image: url("../public/copied.svg");
+  background-image: url("../copied.svg");
   background-size: 24px 24px;
   background-position: center;
   background-repeat: no-repeat;
 }
 .delete-svg {
-  background-image: url("../public/delete.svg");
+  background-image: url("../delete.svg");
   background-size: 24px 24px;
   background-position: center;
   background-repeat: no-repeat;
 }
 .help-svg {
-  background-image: url("../public/help.svg");
+  background-image: url("../help.svg");
   background-size: 24px 24px;
   background-position: center;
   background-repeat: no-repeat;
 }
 .refresh-svg {
-  background-image: url("../public/refresh.svg");
+  background-image: url("../refresh.svg");
   background-size: 24px 24px;
   background-position: center;
   background-repeat: no-repeat;
