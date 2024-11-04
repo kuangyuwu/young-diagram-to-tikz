@@ -13,7 +13,8 @@ const Result = lazy(() => import("./components/result/result.tsx"));
 export const SelectedIndexContext = createContext<YDIndex | null>(null);
 
 function App() {
-  const { ydData, getYDData, updateYDData, resetYDData } = useYDData(10, 10);
+  const n = window.innerWidth > 640 ? 7 : 5;
+  const { ydData, getYDData, updateYDData, resetYDData } = useYDData(n, n);
   const { selectedIndex, updateSelectedIndex, clearSelection } =
     useSelectedIndex();
 

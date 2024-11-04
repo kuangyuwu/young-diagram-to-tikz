@@ -14,10 +14,10 @@ export default function TikzBox({ tikzCode }: { tikzCode: string }) {
 
   return (
     <div className="w-full p-1.5 md:w-1/2">
-      <div className="bg-white w-auto h-96 rounded-3xl text-xs flex justify-center items-center">
+      <div className="bg-white w-auto h-60 sm:h-96 rounded-3xl text-xs flex justify-center items-center">
         <div className="w-5/6 h-5/6 overflow-hidden relative">
           <button
-            className="bg-amber-100 w-8 h-8 absolute right-0 top-0 rounded-full flex justify-center items-center hover:scale-110"
+            className="bg-amber-100 w-8 h-8 absolute right-2 top-2 rounded-md flex justify-center items-center hover:scale-110"
             title="copy"
             onClick={onClick}
           >

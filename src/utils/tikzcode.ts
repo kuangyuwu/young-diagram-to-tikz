@@ -3,6 +3,14 @@ import { CellData, EdgeData, YDData } from "../constants/ydData";
 
 export function generateTikzCode(d: YDData): string {
   let toJoin: string[] = [];
+  for (let i = 0; i < d.cells.length; i++) {
+    for (let j = 0; j < d.cells[i].length; j++) {
+      const c = d.cells[i][j];
+      if (c.text !== "") {
+        toJoin.push(cellToTikz(c, j, i));
+      }
+    }
+  }
   for (let i = 0; i < d.hEdges.length; i++) {
     for (let j = 0; j < d.hEdges[i].length; j++) {
       const e = d.hEdges[i][j];
@@ -16,14 +24,6 @@ export function generateTikzCode(d: YDData): string {
       const e = d.vEdges[i][j];
       if (e.exists) {
         toJoin.push(vEdgeToTikz(e, j, i));
-      }
-    }
-  }
-  for (let i = 0; i < d.cells.length; i++) {
-    for (let j = 0; j < d.cells[i].length; j++) {
-      const c = d.cells[i][j];
-      if (c.text !== "") {
-        toJoin.push(cellToTikz(c, j, i));
       }
     }
   }

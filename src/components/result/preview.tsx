@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 export default function Preview({
   tikzCode,
@@ -19,9 +19,10 @@ export default function Preview({
 
   return (
     <div className="w-full p-1.5 md:w-1/2">
-      <div className="bg-white w-auto h-96 flex justify-center items-center p-3 rounded-3xl">
+      <div className="bg-white w-auto h-60 sm:h-96 flex justify-center items-center p-3 rounded-3xl overflow-hidden">
         {showPreview ? (
           <div className="w-5/6 h-5/6">
+            <Loading />
             <iframe
               className="bg-white w-full h-full"
               sandbox="allow-same-origin allow-scripts"
@@ -41,6 +42,19 @@ export default function Preview({
           </button>
         )}
       </div>
+    </div>
+  );
+}
+
+function Loading() {
+  const ref = useRef<HTMLDivElement>(null);
+  setTimeout(() => {
+    ref.current?.remove();
+  }, 1000);
+
+  return (
+    <div className="w-full h-full flex justify-center items-center" ref={ref}>
+      Loading...
     </div>
   );
 }

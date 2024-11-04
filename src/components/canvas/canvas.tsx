@@ -80,8 +80,8 @@ export default function Canvas({
 
   return (
     <div className="w-11/12 p-1.5 lg:w-3/4 relative">
-      <div className="bg-white w-auto p-12 rounded-3xl flex sm:justify-center items-center overflow-auto">
-        <div>{child}</div>
+      <div className="bg-white w-auto p-12 rounded-3xl flex items-center overflow-auto">
+        <div className="m-auto">{child}</div>
       </div>
       <ResetButton
         resetYDData={resetYDData}
