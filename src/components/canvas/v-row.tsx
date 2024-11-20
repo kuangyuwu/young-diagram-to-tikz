@@ -15,11 +15,11 @@ export default function VRow({
   getEdgeOnClick: (
     isHorizontal: boolean,
     i: number,
-    j: number
+    j: number,
   ) => React.MouseEventHandler<HTMLButtonElement>;
   getCellOnClick: (
     i: number,
-    j: number
+    j: number,
   ) => React.MouseEventHandler<HTMLButtonElement>;
 }) {
   let children = [];
@@ -31,7 +31,7 @@ export default function VRow({
         edgeData={edges[j]}
         createIfNotExist={getEdgeOnClick(false, i, j)}
         key={`v-edge-${i}-${j}`}
-      />
+      />,
     );
     if (j !== edges.length - 1) {
       children.push(
@@ -41,7 +41,7 @@ export default function VRow({
           j={j}
           cellData={cells[j]}
           cellOnClick={getCellOnClick(i, j)}
-        />
+        />,
       );
     }
   }

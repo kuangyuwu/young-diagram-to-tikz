@@ -19,10 +19,10 @@ export default function EdgeColorTool({
   }, [makeUpdate]);
 
   function toggleIsExpanded(
-    _event: React.MouseEvent<HTMLButtonElement, MouseEvent>
+    _event: React.MouseEvent<HTMLButtonElement, MouseEvent>,
   ) {
     setExpandedTool(
-      expandedTool === Tools.EdgeColor ? Tools.None : Tools.EdgeColor
+      expandedTool === Tools.EdgeColor ? Tools.None : Tools.EdgeColor,
     );
   }
 
@@ -34,7 +34,7 @@ export default function EdgeColorTool({
   }
 
   let options = [
-    <div key="edge-color-blank" className="w-2 inline-block"></div>,
+    <div key="edge-color-blank" className="inline-block w-2"></div>,
   ];
   for (let [, c] of Object.entries(Color)) {
     const opt = (
@@ -48,7 +48,7 @@ export default function EdgeColorTool({
   }
 
   return (
-    <div className="h-8 m-1 rounded-full bg-amber-100 flex flex-nowrap items-center">
+    <div className="m-1 flex h-8 flex-nowrap items-center rounded-full bg-amber-100">
       <EdgeColorButtons color={currColor} onClick={toggleIsExpanded} />
       {expandedTool === Tools.EdgeColor ? options : <></>}
     </div>
@@ -66,7 +66,7 @@ function EdgeColorButtons({
   return (
     <button
       title={color}
-      className="bg-white w-6 h-6 mx-1 rounded-full hover:scale-110 flex items-center justify-center"
+      className="mx-1 flex h-6 w-6 items-center justify-center rounded-full bg-white hover:scale-110"
       onClick={onClick}
     >
       <div className={className}></div>

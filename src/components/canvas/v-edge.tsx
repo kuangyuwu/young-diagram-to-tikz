@@ -40,7 +40,7 @@ export default function VEdge({
 
   return (
     <div
-      className="flex justify-center items-center v-edge-container"
+      className="v-edge-container flex items-center justify-center"
       key={`v-edge-container-${i}-${j}`}
     >
       <button

@@ -21,7 +21,7 @@ export default function CellToolBar({
     (changes: Partial<CellData>) => {
       updateYDData(selectedIndex, changes);
     },
-    [selectedIndex]
+    [selectedIndex],
   );
 
   return (

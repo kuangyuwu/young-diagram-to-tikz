@@ -37,7 +37,7 @@ export default function Cell({
 
   return (
     <div
-      className="flex justify-center items-center cell-container"
+      className="cell-container flex items-center justify-center"
       key={`cell-container-${i}-${j}`}
     >
       <button

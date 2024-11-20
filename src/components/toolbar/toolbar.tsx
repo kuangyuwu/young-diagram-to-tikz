@@ -16,12 +16,12 @@ export default function ToolBar({
   clearSelection: () => void;
   updateYDData: (
     ydIndex: YDIndex,
-    changes: Partial<EdgeData> | Partial<CellData>
+    changes: Partial<EdgeData> | Partial<CellData>,
   ) => void;
 }) {
   return (
     <div className="w-11/12 p-1.5 lg:w-3/4">
-      <div className="bg-white h-10 rounded-3xl flex justify-center items-center overflow-auto">
+      <div className="flex h-10 items-center justify-center overflow-auto rounded-3xl bg-white">
         {selectedIndex === null ? (
           <></>
         ) : selectedIndex.itemType === YDItemType.HEdge ||

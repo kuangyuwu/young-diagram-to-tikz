@@ -27,15 +27,15 @@ export default function CellTextTool({
   }
 
   return (
-    <div className="h-8 m-1 rounded-full bg-amber-100 flex items-center flex-nowrap">
-      <div className="w-3 inline-block"></div>
+    <div className="m-1 flex h-8 flex-nowrap items-center rounded-full bg-amber-100">
+      <div className="inline-block w-3"></div>
       Text:
-      <div className="h-6 w-32 m-1 rounded-full bg-white inline-block">
-        <div className="w-2 inline-block"></div>
+      <div className="m-1 inline-block h-6 w-32 rounded-full bg-white">
+        <div className="inline-block w-2"></div>
         <input
           name="text"
           type="text"
-          className="w-28 leading-6 text-sm"
+          className="w-28 text-sm leading-6"
           autoComplete="off"
           onInput={onInput}
           ref={inputRef}

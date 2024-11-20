@@ -11,7 +11,7 @@ export default function Result({
   clearSelection: () => void;
 }) {
   return (
-    <div className="w-11/12 flex flex-wrap flex-shrink lg:w-3/4">
+    <div className="flex w-11/12 flex-shrink flex-wrap lg:w-3/4">
       <TikzBox tikzCode={tikzCode} />
       <Suspense fallback={<></>}>
         <Preview tikzCode={tikzCode} clearSelection={clearSelection} />

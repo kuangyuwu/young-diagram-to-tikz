@@ -2,7 +2,7 @@ import { Color, Thickness } from "../constants/enums";
 
 export function getThicknessClassName(
   isHorizontal: boolean,
-  t: Thickness
+  t: Thickness,
 ): string {
   const prefix = isHorizontal ? "h-edge" : "v-edge";
   let tStr = t as string;

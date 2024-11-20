@@ -6,20 +6,20 @@ export default function Help() {
   return (
     <>
       <button
-        className="bg-yellow-200 w-8 h-8 absolute right-4 top-4 rounded-full flex justify-center items-center hover:scale-110"
+        className="absolute right-4 top-4 flex h-8 w-8 items-center justify-center rounded-full bg-yellow-200 hover:scale-110"
         title="help"
         onClick={() => {
           setIsHelpVisible(!isHelpVisible);
         }}
       >
         {isHelpVisible ? (
-          <div className="h-6 w-6 close-svg"></div>
+          <div className="close-svg h-6 w-6"></div>
         ) : (
-          <div className="h-6 w-6 help-svg"></div>
+          <div className="help-svg h-6 w-6"></div>
         )}
       </button>
       {isHelpVisible ? (
-        <div className="bg-yellow-200/70 backdrop-blur-sm w-3/4 sm:w-1/2 lg:w-1/3 h-64 absolute top-16 right-4 z-50 rounded-3xl p-6 text-sm overflow-auto">
+        <div className="absolute right-4 top-16 z-50 h-64 w-3/4 overflow-auto rounded-3xl bg-yellow-200/70 p-6 text-sm backdrop-blur-sm sm:w-1/2 lg:w-1/3">
           <b>How to use?</b>
           <div className="h-3"></div>
           1. Click on a square cell to create it and add text in it &#40;wrap

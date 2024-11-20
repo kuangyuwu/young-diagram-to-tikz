@@ -22,7 +22,7 @@ export default function EdgeToolBar({
     (changes: Partial<EdgeData>) => {
       updateYDData(selectedIndex, changes);
     },
-    [selectedIndex]
+    [selectedIndex],
   );
 
   return (

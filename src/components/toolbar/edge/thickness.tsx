@@ -19,10 +19,10 @@ export default function EdgeThicknessTool({
   }, [makeUpdate]);
 
   function toggleIsExpanded(
-    _event: React.MouseEvent<HTMLButtonElement, MouseEvent>
+    _event: React.MouseEvent<HTMLButtonElement, MouseEvent>,
   ) {
     setExpandedTool(
-      expandedTool === Tools.EdgeThickness ? Tools.None : Tools.EdgeThickness
+      expandedTool === Tools.EdgeThickness ? Tools.None : Tools.EdgeThickness,
     );
   }
 
@@ -34,7 +34,7 @@ export default function EdgeThicknessTool({
   }
 
   let options = [
-    <div key="edge-thickness-blank" className="w-2 inline-block"></div>,
+    <div key="edge-thickness-blank" className="inline-block w-2"></div>,
   ];
   for (let [, t] of Object.entries(Thickness)) {
     const opt = (
@@ -48,7 +48,7 @@ export default function EdgeThicknessTool({
   }
 
   return (
-    <div className="h-8 m-1 rounded-full bg-amber-100 flex flex-nowrap items-center">
+    <div className="m-1 flex h-8 flex-nowrap items-center rounded-full bg-amber-100">
       <EdgeThicknessButtons
         thickness={currThickness}
         onClick={toggleIsExpanded}
@@ -70,7 +70,7 @@ function EdgeThicknessButtons({
     <button
       title={thickness}
       className={
-        "w-6 h-6 mx-1 rounded-full bg-white hover:scale-110 flex justify-center items-center"
+        "mx-1 flex h-6 w-6 items-center justify-center rounded-full bg-white hover:scale-110"
       }
       onClick={onClick}
     >

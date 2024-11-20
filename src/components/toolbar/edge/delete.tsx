@@ -18,7 +18,7 @@ export default function EdgeDeleteTool({
   }, [makeUpdate]);
 
   function toggleIsExpanded(
-    _event: React.MouseEvent<HTMLButtonElement, MouseEvent>
+    _event: React.MouseEvent<HTMLButtonElement, MouseEvent>,
   ) {
     setExpandedTool(expandedTool === Tools.Delete ? Tools.None : Tools.Delete);
   }
@@ -34,19 +34,19 @@ export default function EdgeDeleteTool({
   }, [makeUpdate]);
 
   return (
-    <div className="h-8 m-1 rounded-full bg-red-100 flex flex-nowrap items-center">
+    <div className="m-1 flex h-8 flex-nowrap items-center rounded-full bg-red-100">
       <button
         title="delete"
-        className="w-6 h-6 m-1 rounded-full hover:scale-110 delete-svg"
+        className="delete-svg m-1 h-6 w-6 rounded-full hover:scale-110"
         onClick={toggleIsExpanded}
       ></button>
       {expandedTool === Tools.Delete ? (
         <>
-          <div className="w-14 h-5 m-1 text-sm inline-block align-middle">
+          <div className="m-1 inline-block h-5 w-14 align-middle text-sm">
             Delete?
           </div>
           <button
-            className="w-10 h-6 m-1 rounded-full bg-red-300 text-red-600 text-sm"
+            className="m-1 h-6 w-10 rounded-full bg-red-300 text-sm text-red-600"
             onClick={deleteElement}
           >
             Yes

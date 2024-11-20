@@ -14,13 +14,13 @@ export default function ResetButton({
     <>
       {isConfirmationVisible ? (
         <>
-          <div className="bg-transparent backdrop-blur-sm w-11/12 h-[90%] absolute top-8 left-8 z-10 rounded-3xl p-6 text-sm overflow-auto"></div>
-          <div className="bg-amber-100 w-auto max-w-[80%] h-8 absolute right-4 top-4 z-20 rounded-full flex justify-center items-center overflow-auto text-sm text-amber-600">
+          <div className="absolute left-8 top-8 z-10 h-[90%] w-11/12 overflow-auto rounded-3xl bg-transparent p-6 text-sm backdrop-blur-sm"></div>
+          <div className="absolute right-4 top-4 z-20 flex h-8 w-auto max-w-[80%] items-center justify-center overflow-auto rounded-full bg-amber-100 text-sm text-amber-600">
             <div className="w-3"></div>
             Reset?
             <div className="w-1.5"></div>
             <button
-              className="bg-amber-200 h-6 rounded-full flex justify-center items-center hover:scale-110"
+              className="flex h-6 items-center justify-center rounded-full bg-amber-200 hover:scale-110"
               onClick={() => {
                 setIsConfirmationVisible(false);
               }}
@@ -31,7 +31,7 @@ export default function ResetButton({
             </button>
             <div className="w-1.5"></div>
             <button
-              className="bg-amber-300 h-6 rounded-full flex justify-center items-center hover:scale-110"
+              className="flex h-6 items-center justify-center rounded-full bg-amber-300 hover:scale-110"
               onClick={() => {
                 resetYDData();
                 setIsConfirmationVisible(false);
@@ -46,14 +46,14 @@ export default function ResetButton({
         </>
       ) : (
         <button
-          className="bg-amber-100 w-8 h-8 absolute right-4 top-4 rounded-full flex justify-center items-center hover:scale-110"
+          className="absolute right-4 top-4 flex h-8 w-8 items-center justify-center rounded-full bg-amber-100 hover:scale-110"
           title="reset"
           onClick={() => {
             clearSelection();
             setIsConfirmationVisible(true);
           }}
         >
-          <div className="h-6 w-6 refresh-svg"></div>
+          <div className="refresh-svg h-6 w-6"></div>
         </button>
       )}
     </>

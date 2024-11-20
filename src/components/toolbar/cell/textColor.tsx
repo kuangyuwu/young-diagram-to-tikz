@@ -19,10 +19,10 @@ export default function CellTextColorTool({
   }, [makeUpdate]);
 
   function toggleIsExpanded(
-    _event: React.MouseEvent<HTMLButtonElement, MouseEvent>
+    _event: React.MouseEvent<HTMLButtonElement, MouseEvent>,
   ) {
     setExpandedTool(
-      expandedTool === Tools.CellTextColor ? Tools.None : Tools.CellTextColor
+      expandedTool === Tools.CellTextColor ? Tools.None : Tools.CellTextColor,
     );
   }
 
@@ -34,7 +34,7 @@ export default function CellTextColorTool({
   }
 
   let options = [
-    <div key="text-color-blank" className="w-2 inline-block"></div>,
+    <div key="text-color-blank" className="inline-block w-2"></div>,
   ];
   for (let [, c] of Object.entries(Color)) {
     const opt = (
@@ -48,7 +48,7 @@ export default function CellTextColorTool({
   }
 
   return (
-    <div className="h-8 m-1 rounded-full bg-amber-100 flex flex-nowrap items-center">
+    <div className="m-1 flex h-8 flex-nowrap items-center rounded-full bg-amber-100">
       <CellTextColorButtons
         textColor={currTextColor}
         onClick={toggleIsExpanded}

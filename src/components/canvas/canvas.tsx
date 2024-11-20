@@ -20,7 +20,7 @@ export default function Canvas({
   function getEdgeOnClick(
     isHorizontal: boolean,
     i: number,
-    j: number
+    j: number,
   ): React.MouseEventHandler<HTMLButtonElement> {
     const ydIndex = {
       i: i,
@@ -36,7 +36,7 @@ export default function Canvas({
 
   function getCellOnClick(
     i: number,
-    j: number
+    j: number,
   ): React.MouseEventHandler<HTMLButtonElement> {
     const cell: YDIndex = { i: i, j: j, itemType: YDItemType.Cell };
     const neighboringEdges: Array<YDIndex> = [
@@ -62,7 +62,7 @@ export default function Canvas({
         i={i}
         edges={ydData.hEdges[i]}
         getEdgeOnClick={getEdgeOnClick}
-      />
+      />,
     );
     if (i !== ydData.vEdges.length) {
       child.push(
@@ -73,14 +73,14 @@ export default function Canvas({
           cells={ydData.cells[i]}
           getEdgeOnClick={getEdgeOnClick}
           getCellOnClick={getCellOnClick}
-        />
+        />,
       );
     }
   }
 
   return (
-    <div className="w-11/12 p-1.5 lg:w-3/4 relative">
-      <div className="bg-white w-auto p-12 rounded-3xl flex items-center overflow-auto">
+    <div className="relative w-11/12 p-1.5 lg:w-3/4">
+      <div className="flex w-auto items-center overflow-auto rounded-3xl bg-white p-12">
         <div className="m-auto">{child}</div>
       </div>
       <ResetButton

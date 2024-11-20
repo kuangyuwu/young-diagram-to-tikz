@@ -22,8 +22,8 @@ function App() {
   const tikzCode = generateTikzCode(ydData);
 
   return (
-    <div className="bg-yellow-100 w-full flex justify-center font-mono">
-      <div className="w-full xl:w-4/5 flex flex-wrap justify-center">
+    <div className="flex w-full justify-center bg-yellow-100 font-mono">
+      <div className="flex w-full flex-wrap justify-center xl:w-4/5">
         <Help />
         <Title />
         <Suspense fallback={<></>}>

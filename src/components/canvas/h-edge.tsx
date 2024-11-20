@@ -40,7 +40,7 @@ export default function HEdge({
 
   return (
     <div
-      className="flex justify-center items-center h-edge-container"
+      className="h-edge-container flex items-center justify-center"
       key={`h-edge-container-${i}-${j}`}
     >
       <button

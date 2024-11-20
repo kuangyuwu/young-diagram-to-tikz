@@ -19,19 +19,19 @@ export default function Preview({
 
   return (
     <div className="w-full p-1.5 md:w-1/2">
-      <div className="bg-white w-auto h-60 sm:h-96 flex justify-center items-center p-3 rounded-3xl overflow-hidden">
+      <div className="flex h-60 w-auto items-center justify-center overflow-hidden rounded-3xl bg-white p-3 sm:h-96">
         {showPreview ? (
-          <div className="w-5/6 h-5/6">
+          <div className="h-5/6 w-5/6">
             <Loading />
             <iframe
-              className="bg-white w-full h-full"
+              className="h-full w-full bg-white"
               sandbox="allow-same-origin allow-scripts"
               srcDoc={srcDoc}
             ></iframe>
           </div>
         ) : (
           <button
-            className="bg-amber-100 text-amber-600 w-40 h-10 rounded-full hover:scale-105"
+            className="h-10 w-40 rounded-full bg-amber-100 text-amber-600 hover:scale-105"
             title="show preview"
             onClick={() => {
               setShowPreview(true);
@@ -53,7 +53,7 @@ function Loading() {
   }, 1000);
 
   return (
-    <div className="w-full h-full flex justify-center items-center" ref={ref}>
+    <div className="flex h-full w-full items-center justify-center" ref={ref}>
       Loading...
     </div>
   );

@@ -14,17 +14,17 @@ export default function TikzBox({ tikzCode }: { tikzCode: string }) {
 
   return (
     <div className="w-full p-1.5 md:w-1/2">
-      <div className="bg-white w-auto h-60 sm:h-96 rounded-3xl text-xs flex justify-center items-center">
-        <div className="w-5/6 h-5/6 overflow-hidden relative">
+      <div className="flex h-60 w-auto items-center justify-center rounded-3xl bg-white text-xs sm:h-96">
+        <div className="relative h-5/6 w-5/6 overflow-hidden">
           <button
-            className="bg-amber-100 w-8 h-8 absolute right-2 top-2 rounded-md flex justify-center items-center hover:scale-110"
+            className="absolute right-2 top-2 flex h-8 w-8 items-center justify-center rounded-md bg-amber-100 hover:scale-110"
             title="copy"
             onClick={onClick}
           >
             {isCopied ? (
-              <div className="h-6 w-6 copied-svg"></div>
+              <div className="copied-svg h-6 w-6"></div>
             ) : (
-              <div className="h-5 w-5 content-copy-svg"></div>
+              <div className="content-copy-svg h-5 w-5"></div>
             )}
           </button>
           <div className="h-full w-full overflow-auto">

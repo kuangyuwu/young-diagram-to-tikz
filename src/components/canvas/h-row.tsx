@@ -11,16 +11,16 @@ export default function HRow({
   getEdgeOnClick: (
     isHorizontal: boolean,
     i: number,
-    j: number
+    j: number,
   ) => React.MouseEventHandler<HTMLButtonElement>;
 }) {
   let children = [];
   for (let j = 0; j < edges.length; j++) {
     children.push(
       <div
-        className="flex justify-center items-center vertex-box"
+        className="vertex-box flex items-center justify-center"
         key={`vertex-box-${i}-${j}`}
-      ></div>
+      ></div>,
     );
     children.push(
       <HEdge
@@ -29,14 +29,14 @@ export default function HRow({
         edgeData={edges[j]}
         createIfNotExist={getEdgeOnClick(true, i, j)}
         key={`h-edge-${i}-${j}`}
-      />
+      />,
     );
   }
   children.push(
     <div
-      className="flex justify-center items-center vertex-box"
+      className="vertex-box flex items-center justify-center"
       key={`vertex-box-${i}-${edges.length}`}
-    ></div>
+    ></div>,
   );
   return (
     <div className="flex" key={`h-row-div-${i}`}>

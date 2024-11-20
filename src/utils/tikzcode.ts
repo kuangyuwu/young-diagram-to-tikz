@@ -43,7 +43,7 @@ function edgeToTikz(
   d: EdgeData,
   x: number,
   y: number,
-  isHorizontal: boolean
+  isHorizontal: boolean,
 ): string {
   const start: string = `(${x},${-y})`;
   const end: string = isHorizontal ? `(${x + 1},${-y})` : `(${x},${-y - 1})`;
